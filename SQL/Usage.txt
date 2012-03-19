@@ -1,0 +1,12 @@
+Manual de Uso:
+
+Sequencia de uso para que o sistema insira as informações corretamente sem precisar mexer em alguma variável:
+
+1 - Accounts;
+2 - Categories;
+3 - SubCategories;
+4 - Budgets;
+5 - BudgetsRecords;
+6 - Expenditure;
+
+Cada script já está preparado para executar a inserção de um registro.
