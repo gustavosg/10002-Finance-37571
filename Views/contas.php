@@ -9,13 +9,13 @@
 	<table align="center">
 		<tbody>
 			<tr>
-				<td><li/><a href="contas/cad_contas.php">Cadastrar</a></td>
-				<td><li/><a href="con_contas.php">Consultar</a></td>
+				<td><li/><a href="contas/cadastro.php">Cadastrar Conta</a></td>
+				<td><li/><a href="contas/consultar.php">Consultar Conta</a></td>
 				
 			</tr>
 			<tr>
-				<td><li/><a href="exc_contas.php">Excluir</a></td>
-				<td><li/><a href="rel_contas.php">Relatório</a></td>
+				<td><li/><a href="contas/excluir.php">Excluir Conta</a></td>
+				<td><li/><a href="contas/relatorios.php">Relatório Conta</a></td>
 			</tr>
 		</tbody>
 	</table>
