@@ -3,12 +3,12 @@
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
 <meta charset="ISO-8859-1">
-<title>Finance-37571: Cadastramento de Despesas:</title>
+<title>Finance-37571: Cadastramento de Sub-Categoria:</title>
 </head>
 
 <body>
 <form action="" name="form" method="post">
-	<h1 align="center">Despesass que foram cadastradas:</h1>
+	<h1 align="center">Sub-Categorias que foram cadastradas:</h1>
 	<br>
 
 

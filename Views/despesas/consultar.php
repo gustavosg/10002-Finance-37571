@@ -3,7 +3,7 @@
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
 <meta charset="ISO-8859-1">
-<title>Finance-37571: Consultar Categoria:</title>
+<title>Finance-37571: Consultar Despesas:</title>
 </head>
 
 <body>
@@ -11,8 +11,8 @@
 	<h1 align="center">Entre com as informações:</h1>
 	<br>
 	<p align="center">
-		<label align="center">Categoria:</label> <input type="text" size="100"
-			maxlength="50" name="nomeCategoria" id="nomeCategoria" />
+		<label align="center">Despesas:</label> <input type="text" size="100"
+			maxlength="50" name="nomeDespesas" id="nomeDespesas" />
 	</p>
 	<br>
 	<p align="center">
@@ -20,7 +20,7 @@
 			>Enviar</button>
 
 		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposCategorias()">Limpar</button>
+			onclick="limparCamposDespesass()">Limpar</button>
 		<br>
 	</p>
 	</form>

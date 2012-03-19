@@ -3,16 +3,16 @@
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
 <meta charset="ISO-8859-1">
-<title>Finance-37571: Cadastramento de Despesas:</title>
+<title>Finance-37571: Cadastramento de Items no Orçamento:</title>
 </head>
 
 <body>
-<form action="../../SQL/crudAccounts.php" name="form" method="post">
+<form action="" name="form" method="post">
 	<h1 align="center">Entre com as informações:</h1>
 	<br>
 	<p align="center">
-		<label align="center">Despesas:</label> <input type="text" size="100"
-			maxlength="50" name="nomeDespesas" id="nomeDespesas" />
+		<label align="center">Orçamentos:</label> <input type="text" size="100"
+			maxlength="50" name="NomeItemOrcamento" id="NomeItemOrcamento" />
 	</p>
 	<br>
 	<p align="center">
@@ -20,7 +20,7 @@
 			>Enviar</button>
 
 		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposDespesass()">Limpar</button>
+			onclick="limparCamposOrcamentoss()">Limpar</button>
 		<br>
 	</p>
 	</form>
