@@ -12,36 +12,42 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        Categories.php
-* Descrição:   Entidade de mapeamento para Categories
+* Nome:        Budgets.php
+* Descrição:   Entidade de mapeamento para Budgets
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
-* Data:        21/03/2012
+* Data:        22/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-
 /** @Entity **/
-class Categories {
 
-	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity="SubCategories") **/
+class Budgets{
+	
+	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity("BudgetRecords") @var integer **/
 	protected $id;
-
+	
 	/** @Column(type="string") **/
 	protected $name;
-
+	
 	/** @Column(type="datetime") **/
 	protected $created;
-
+	
 	/** @Column(type="datetime") **/
 	protected $modified;
-
+	
+	
+	// TODO Gustavo: Continuar construtor de Budgets
+	public function  __construct(){
+		
+	}
+	
 	public function getId(){
 		return $this->id;
 	}
 	public function setId($id){
-		$this->id= $id;
+		$this->id = $id;
 	}
-
+	
 	public function getName(){
 		return $this->name;
 	}
@@ -62,10 +68,11 @@ class Categories {
 	public function setModified($modified){
 		$this->modified= $modified;
 	}
-
-
-	public function toString(){
-		return "[".($this->id==null?"-":$this->id)."] " . $this->name . " , ". $this->created . " , ". $this->modified . " . " ;
+	
+	public function ToString(){
+		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ". $this->created." , ". $this->modified . " . " ;
 	}
+	
 }
+
 ?>

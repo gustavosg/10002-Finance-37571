@@ -1,13 +1,38 @@
 <?php
+/*------------------------------------------------------------------------------------------------------------------------
+ * DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SubCategories.php
+* Descrição:   Entidade de mapeamento para SubCategories
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        21/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
+
 /** @Entity **/
 class SubCategories {
 
-	/** @Id @GeneratedValue @Column(type="integer") **/
+	// TODO Gustavo: Este mapeamento me deixou bem confuso, como será feito?
+	/** @Id @GeneratedValue @Column(type="integer") 
+	 * @OneToMany(targetEntity="Expenditure), @OneToMany(targetEntity="BudgetRecords)
+	 * Enter description here ...
+	 * @var IntegerType:: **/
 	protected $id;
 
-	/** @ManyToOne(targetEntity="Categories")**/
+	/** @ManyToOne(targetEntity="Categories", inversedBy="id")**/
 	protected $categoryId;
-	
+
 	/** @Column(type="string") **/
 	protected $name;
 
@@ -17,13 +42,18 @@ class SubCategories {
 	/** @Column(type="datetime") **/
 	protected $modified;
 
+	// TODO Gustavo: fazer constructor.
+	public function __construct(){
+
+	}
+
 	public function getId(){
 		return $this->id;
 	}
 	public function setId($id){
 		$this->id= $id;
 	}
-	
+
 	public function getCategoryId(){
 		return $this->categoryId;
 	}
@@ -51,7 +81,6 @@ class SubCategories {
 	public function setModified($modified){
 		$this->modified= $modified;
 	}
-
 
 	public function toString(){
 		return "[".($this->id==null?"-":$this->id)."] " . $this->name . " , ". $this->created . " , ". $this->modified . " . " ;

@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------------------------------------------------
-* DADOS DO SISTEMA
+ * DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:		Finance-37571
 * Área:		Finanças
@@ -12,22 +12,28 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        Categories.php
-* Descrição:   Entidade de mapeamento para Categories
+* Nome:        BudgetRecords.php
+* Descrição:   Entidade de mapeamento para BudgetRecords
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
-* Data:        21/03/2012
+* Data:        22/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-
 /** @Entity **/
-class Categories {
 
-	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity="SubCategories") **/
+class BudgetRecords{
+
+	/** @Id @GeneratedValue @Column(type="integer") **/
 	protected $id;
 
-	/** @Column(type="string") **/
-	protected $name;
+	/** @ManyToOne(targetEntity("Budgets") **/
+	protected $budgetId;
+
+	/** @ManyToOne(targetEntity("SubCategories") **/
+	protected $subCategoryId;
+
+	/** @Column(type="decimal") **/
+	protected $ammount;
 
 	/** @Column(type="datetime") **/
 	protected $created;
@@ -35,18 +41,32 @@ class Categories {
 	/** @Column(type="datetime") **/
 	protected $modified;
 
+
+	// TODO Gustavo: Continuar construtor de BudgetRecords
+
+	public function  __construct(){
+
+	}
+
 	public function getId(){
 		return $this->id;
 	}
 	public function setId($id){
-		$this->id= $id;
+		$this->id = $id;
 	}
 
-	public function getName(){
-		return $this->name;
+	public function getBudgetId(){
+		return $this->budgetId;
 	}
-	public function setName($name){
-		$this->name = $name;
+	public function setBudgetId($budgetId){
+		$this->budgetId = $budgetId;
+	}
+
+	public function getAmmount(){
+		return $this->ammount;
+	}
+	public function setAmmount($ammount){
+		$this->ammount = $ammount;
 	}
 
 	public function getCreated(){
@@ -63,9 +83,9 @@ class Categories {
 		$this->modified= $modified;
 	}
 
-
-	public function toString(){
-		return "[".($this->id==null?"-":$this->id)."] " . $this->name . " , ". $this->created . " , ". $this->modified . " . " ;
+	public function ToString(){
+		return "[".($this->id==null?"-":$this->id)."] " . $this->budgetId . " , ". $this->ammount ." , ". $this->created . " , ". $this->modified . " . " ;
 	}
 }
+
 ?>

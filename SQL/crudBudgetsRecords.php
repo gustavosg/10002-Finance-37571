@@ -306,8 +306,6 @@ class crudBudgetsRecords{
 			echo "Mês selecionado: ".$this->selectedMonth."<br>";
 			
 		}
-		
-		//TODO: Gustavo: Conferir se o resultado está ok.
 	}
 
 }
