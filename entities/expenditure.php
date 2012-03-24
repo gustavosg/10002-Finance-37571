@@ -32,7 +32,7 @@ class Expenditure{
 	/** @ManyToOne(targetEntity="subCategories") */
 	protected $subCategoryId;
 
-	/** @ManyToOne(targetEntity="Accounts") */
+	/** @ManyToOne(targetEntity="Accounts", inversedBy="expenditure") */
 	protected $accountId;
 
 	/** @Column(type="datetime") **/

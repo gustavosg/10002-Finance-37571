@@ -34,17 +34,16 @@ class Accounts{
 	/** @Column(type="datetime") **/
 	protected $modified;
 
-	// TODO Gustavo: Dúvidas neste mapeamento, será assim mesmo?
-	/**
-	* @OneToMany(targetEntity="Expenditure", inversedBy="accountId")
-	**/
-	protected $expenditure;
-
+	// 	// TODO Gustavo: Dúvidas neste mapeamento, será assim mesmo?
+	// 	/**
+	// 	* @OneToMany(targetEntity="Expenditure", inversedBy="accountId")
+	// 	**/
+	// 	protected $expenditure;
 
 	// TODO Gustavo: conferir se terá construtor de Accounts
 
 	public function getId(){
-		return $this->post;
+		return $this->id;
 	}
 	public function setId($id){
 		$this->id = $id;
@@ -56,21 +55,26 @@ class Accounts{
 	public function setName($name){
 		$this->name = $name;
 	}
-	
+
 	public function getCreated(){
 		return $this->created;
 	}
 	public function setCreated($created){
-		$this->created = $created;
+		$this->created = new DateTime($created);
 	}
-	
+
 	public function getModified(){
 		return $this->modified;
 	}
 	public function setModified($modified){
-		$this->modified = $modified;
+		$this->modified =new DateTime($modified);
 	}
 
+	// TODO Gustavo: Não está imprimindo a data
+	public function ToString(){
+		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ".  $this->created == null? "-" : $this->created ." , ". $this->modified == null? "-":$this->modified . " . " ;
+	}
+	
 }
 
 ?>

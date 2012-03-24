@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once "../../bootstrap.php";
 
@@ -6,6 +6,7 @@ $nomeConta = $_POST['nomeConta'];
 
 $conta = new Accounts();
 $conta->setName($nomeConta);
+$conta->setCreated(date("Y-m-d H:i:s"));
 
 $entityManager->persist($conta);
 $entityManager->flush();
@@ -13,9 +14,12 @@ $entityManager->flush();
 $postRepo = $entityManager->getRepository("Accounts");
 $posts = $postRepo->findAll();
 
-echo $posts;
-
-
+function exibirRegistro($post){
+	foreach ($post as $conta)
+	{
+		$conta->ToString();
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +34,8 @@ echo $posts;
 	<form action="" name="form" method="post">
 		<h1 align="center">Conta Cadastrada:</h1>
 		
-		
+<?php exibirRegistro($posts);?>
+
 	</form>
 </body>
 <footer style="position: fixed; right: 3px; bottom: 0px;">
