@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<form action="rel_consult_contas.php" name="form" method="post">
+<form action="resultConsultar.php" name="form" method="post">
 	<h1 align="center">Entre com as informações:</h1>
 	<br>
 	<p align="center">

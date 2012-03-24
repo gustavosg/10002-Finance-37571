@@ -1,3 +1,18 @@
+<?php
+require_once '../../bootstrap.php';
+
+$postRepo = $entityManager->getRepository("Accounts");
+$accounts = $postRepo->findAll();
+
+function listarContas($accounts){
+	foreach($accounts as $post) {
+		echo "<option >".$post->getName()."</option>";
+	}
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,22 +22,25 @@
 </head>
 
 <body>
-<form action="" name="form" method="post">
-	<h1 align="center">Conta à Excluir:</h1>
-	<br>
-	<p align="center">
-		<label align="center">Conta:</label> <input type="text" size="100"
-			maxlength="50" name="nomeConta" id="nomeConta" />
-	</p>
-	<br>
-	<p align="center">
-		<button type="submit" value="submit" name="Enviar"
-			>Enviar</button>
-
-		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposContas()">Limpar</button>
+	<form action="resultExcluir.php" name="form" method="post">
+		<h1 align="center">Conta à Excluir:</h1>
 		<br>
-	</p>
+		<p align="center">
+			<label align="center">Conta:</label> 
+			
+					<select name="nomeConta">
+		<option />
+
+			<?php listarContas($accounts)?>
+			</select>
+			</p>
+		<p align="center">
+			<button type="submit" value="submit" name="Enviar">Enviar</button>
+
+			<button type="button" value="Limpar" name="Limpar"
+				onclick="limparCamposContas()">Limpar</button>
+			<br>
+		</p>
 	</form>
 </body>
 <footer style="position: fixed; right: 3px; bottom: 0px;">

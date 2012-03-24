@@ -15,7 +15,7 @@
 			</tr>
 			<tr>
 				<td><li/><a href="contas/excluir.php">Excluir Conta</a></td>
-				<td><li/><a href="contas/relatorios.php">Relatório Conta</a></td>
+				<td><li/><a href="contas/relatorio.php">Relatório Conta</a></td>
 			</tr>
 		</tbody>
 	</table>

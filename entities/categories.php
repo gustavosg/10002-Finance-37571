@@ -31,10 +31,10 @@ class Categories {
 	/** @Column(type="string") **/
 	protected $name;
 
-	/** @Column(type="datetime") **/
+	/** @Column **/
 	protected $created;
 
-	/** @Column(type="datetime") **/
+	/** @Column **/
 	protected $modified;
 
 	// Modificadores de acesso:
@@ -67,8 +67,8 @@ class Categories {
 		$this->modified= $modified;
 	}
 
-	public function toString(){
-		return "[".($this->id==null?"-":$this->id)."] " . $this->name . " , ". $this->created . " , ". $this->modified . " . " ;
+	public function ToString(){
+		return "ID: [".($this->id==null?"-":$this->id)."], Nome: " . $this->name . " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . " . " ;
 	}
 }
 ?>

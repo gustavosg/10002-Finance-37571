@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<form action="" name="form" method="post">
+<form action="resultExcluir.php" name="form" method="post">
 	<h1 align="center">Categoria à Excluir:</h1>
 	<br>
 	<p align="center">

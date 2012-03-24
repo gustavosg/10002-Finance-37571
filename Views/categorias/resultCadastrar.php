@@ -2,22 +2,22 @@
 
 require_once "../../bootstrap.php";
 
-$nomeConta = $_POST['nomeConta'];
+$nomeCategoria = $_POST['nomeCategoria'];
 
-$conta = new Accounts();
-$conta->setName($nomeConta);
-$conta->setCreated(date("Y-m-d H:i:s"));
+$categoria = new Categories();
+$categoria->setName($nomeCategoria);
+$categoria->setCreated(date("Y-m-d H:i:s"));
 
-$entityManager->persist($conta);
+$entityManager->persist($categoria);
 $entityManager->flush();
 
-$postRepo = $entityManager->getRepository("Accounts");
-$posts = $postRepo->findAll();
+$categoriesRepo = $entityManager->getRepository("Categories");
+$posts = $categoriesRepo->findAll();
 
 function exibirRegistro($post){
-	foreach ($post as $conta)
+	foreach ($post as $categoria)
 	{
-		echo $conta->ToString();
+		echo $categoria->ToString();
 	}
 }
 ?>
@@ -27,12 +27,12 @@ function exibirRegistro($post){
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
 <meta charset="ISO-8859-1">
-<title>Finance-37571: Cadastramento de Conta:</title>
+<title>Finance-37571: Cadastramento de Categoria:</title>
 </head>
 
 <body>
 	<form action="" name="form" method="post">
-		<h1 align="center">Conta Cadastrada:</h1>
+		<h1 align="center">Categoria Cadastrada:</h1>
 		
 <?php exibirRegistro($posts);?>
 

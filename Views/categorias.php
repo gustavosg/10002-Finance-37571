@@ -11,8 +11,8 @@
 	<table align="center" border="2" rules="all" >
 		<tbody>
 			<tr>
-				<td><li/><a href="categorias/cadastro.php">Cadastrar Categoria</a></td>
-				<td><li/><a href="categorias/exclusao.php">Excluir Categoria</a></td>
+				<td><li/><a href="categorias/cadastrar.php">Cadastrar Categoria</a></td>
+				<td><li/><a href="categorias/excluir.php">Excluir Categoria</a></td>
 			</tr>
 			<tr>
 				<td><li/><a href="categorias/consultar.php">Consultar Categoria</a></td>

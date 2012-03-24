@@ -4,34 +4,32 @@ require_once "../../bootstrap.php";
 
 $nomeConta = $_POST['nomeConta'];
 
-echo $nomeConta;
-$conta = new Accounts();
+$conta = new Accounts(null, $nomeConta);
 
-$postRepo = $entityManager->getRepository("Accounts");
+$postRepo = $entityManager->getRepository("accounts");
 
-$posts = $postRepo->findBy(array ('id' => $conta->getId()));
-print_r($posts);
+$posts = $postRepo->findBy(array ('name' => $conta->getName()));
+
 listarContas($posts);
 
 function listarContas($posts){
 
-	foreach ($posts as $contas){
-		exibirRegistrosConta($contas);
+	foreach ($posts as $post){
+		exibirRegistrosConta($post);
 	}
 }
 
+$conta->getCreated();
 
 function exibirRegistrosConta($post){
-	print_r($post);
-	echo "Informações da conta: ". $post->getId();
-	foreach ($post as $conta){
-		$conta->getId();
-		$conta->getName();
-		$conta->getCreated();
-		$conta->getModified();
-	}
+	echo "Informações da conta: <br />";
+	echo "Id da conta: ".$post->getId(). "<br />";
+	echo "Nome : ". $post->getName(). "<br />";
+	
+	// TODO Data
+	echo "Criado em: ". $post->getCreatedToString($post->getCreated()) . "<br />";
+	echo "Modificado em: ". $post->getCreatedToString($post->getModified()). "<br />";
 }
-
 
 ?>
 

@@ -28,10 +28,10 @@ class Accounts{
 	/** @Column(type="text") **/
 	protected $name;
 
-	/** @Column(type="datetime") **/
+	/** @Column **/
 	protected $created;
 
-	/** @Column(type="datetime") **/
+	/** @Column **/
 	protected $modified;
 
 	// 	// TODO Gustavo: Dúvidas neste mapeamento, será assim mesmo?
@@ -41,6 +41,11 @@ class Accounts{
 	// 	protected $expenditure;
 
 	// TODO Gustavo: conferir se terá construtor de Accounts
+
+	public function __construct($id = null, $name = null ){
+		$this->id = $id;
+		$this->name = $name;
+	}
 
 	public function getId(){
 		return $this->id;
@@ -70,11 +75,10 @@ class Accounts{
 		$this->modified =new DateTime($modified);
 	}
 
-	// TODO Gustavo: Não está imprimindo a data
 	public function ToString(){
 		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ".  $this->created == null? "-" : $this->created ." , ". $this->modified == null? "-":$this->modified . " . " ;
 	}
-	
+
 }
 
 ?>
