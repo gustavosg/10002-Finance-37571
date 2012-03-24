@@ -23,6 +23,8 @@
 /** @Entity **/
 class Categories {
 
+	// Fields
+	
 	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity="SubCategories") **/
 	protected $id;
 
@@ -35,6 +37,8 @@ class Categories {
 	/** @Column(type="datetime") **/
 	protected $modified;
 
+	// Modificadores de acesso:
+	
 	public function getId(){
 		return $this->id;
 	}
@@ -62,7 +66,6 @@ class Categories {
 	public function setModified($modified){
 		$this->modified= $modified;
 	}
-
 
 	public function toString(){
 		return "[".($this->id==null?"-":$this->id)."] " . $this->name . " , ". $this->created . " , ". $this->modified . " . " ;

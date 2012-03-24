@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<form action="../../SQL/crudAccounts.php" name="form" method="post">
+<form action="resultCadastrar.php" name="form" method="post">
 	<h1 align="center">Entre com as informações:</h1>
 	<br>
 	<p align="center">

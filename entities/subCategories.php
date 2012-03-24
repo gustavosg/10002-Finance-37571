@@ -43,8 +43,8 @@ class SubCategories {
 	protected $modified;
 
 	// TODO Gustavo: fazer constructor.
-	public function __construct(){
-
+	public function __construct(Categories $categoryId){
+			$this->categoryId = $categoryId;
 	}
 
 	public function getId(){

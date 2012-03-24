@@ -51,12 +51,11 @@ class Expenditure{
 	protected $description;
 
 	/**
-	 * É necessário ter uma conta e uma SubCategoria para ter uma Despesa
+	 * É necessário ter uma Account e uma SubCategory para ter uma Expenditure
 	 */
-	public function __construct(Accounts $accountId){
+	public function __construct(Accounts $accountId, SubCategories $subCategoryId){
 		$this->accountId = $accountId;
-		// TODO colocar vínculo da Sub Categoria
-		//$this->comments = new ArrayCollection();
+		$this->subCategoryId = $subCategoryId;
 	}
 
 	public function getId(){

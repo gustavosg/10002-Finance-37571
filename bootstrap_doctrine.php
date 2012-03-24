@@ -17,7 +17,7 @@ $conn = array(
 	  'driver' 	 => 'pdo_mysql'
 	, 'user' 	 => 'root'
 	, 'password' => 'hayabusa'
-	, 'dbname' 	 => 'doctrine_blog_37571'
+	, 'dbname' 	 => 'finance_37571'
 );
 
 

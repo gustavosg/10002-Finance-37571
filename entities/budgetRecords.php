@@ -23,6 +23,8 @@
 
 class BudgetRecords{
 
+	// Fields
+
 	/** @Id @GeneratedValue @Column(type="integer") **/
 	protected $id;
 
@@ -41,12 +43,14 @@ class BudgetRecords{
 	/** @Column(type="datetime") **/
 	protected $modified;
 
+	// Constructor
 
 	// TODO Gustavo: Continuar construtor de BudgetRecords
-
-	public function  __construct(){
-
+	public function  __construct(Budgets $budgetId){
+		$this->budgetId = $budgetId;
 	}
+
+	// Modificadores de acesso
 
 	public function getId(){
 		return $this->id;

@@ -9,7 +9,7 @@
 	<table align="center">
 		<tbody>
 			<tr>
-				<td><li/><a href="contas/cadastro.php">Cadastrar Conta</a></td>
+				<td><li/><a href="contas/cadastrar.php">Cadastrar Conta</a></td>
 				<td><li/><a href="contas/consultar.php">Consultar Conta</a></td>
 				
 			</tr>
