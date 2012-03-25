@@ -1,3 +1,13 @@
+<?php 
+
+require_once '../../bootstrap.php';
+
+$orcamento = new Budgets();
+
+$subCategoria = new SubCategories();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +21,10 @@
 	<h1 align="center">Entre com as informações:</h1>
 	<br>
 	<p align="center">
-		<label align="center">Orçamentos:</label> <input type="text" size="100"
+		<label align="center">Orçamentos:</label> 
+		
+		
+		<input type="text" size="100"
 			maxlength="50" name="NomeItemOrcamento" id="NomeItemOrcamento" />
 	</p>
 	<br>

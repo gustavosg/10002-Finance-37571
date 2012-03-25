@@ -11,14 +11,12 @@
 	<table align="center" border="2" rules="all" >
 		<tbody>
 			<tr>
-				<td>Cadastrar</td>
-				<td>Excluir</td>
+				<td><li/><a href="orcamentos/cadastrar.php">Cadastrar Categoria</a></td>
+				<td><li/><a href="orcamentos/excluir.php">Excluir Categoria</a></td>
 			</tr>
-
-
 			<tr>
-				<td>Consultar</td>
-				<td>Relatório</td>
+				<td><li/><a href="orcamentos/consultar.php">Consultar Categoria</a></td>
+				<td><li/><a href="orcamentos/relatorio.php">Relatório Categoria</a></td>
 
 			</tr>
 

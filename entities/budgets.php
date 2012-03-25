@@ -23,21 +23,22 @@
 
 class Budgets{
 	
-	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity("BudgetRecords") @var integer **/
+	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity="BudgetRecords") @var integer **/
 	protected $id;
 	
 	/** @Column(type="string") **/
 	protected $name;
 	
-	/** @Column(type="datetime") **/
+	/** @Column**/
 	protected $created;
 	
-	/** @Column(type="datetime") **/
+	/** @Column **/
 	protected $modified;
 	
 	
 	// TODO Gustavo: Continuar construtor de Budgets
-	public function  __construct(){
+	public function  __construct($name = null){
+		$this->name = $name;
 		
 	}
 	
@@ -70,7 +71,7 @@ class Budgets{
 	}
 	
 	public function ToString(){
-		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ". $this->created." , ". $this->modified . " . " ;
+		return "ID: [".($this->id==null?"-":$this->id)."], Nome: " . $this->name . " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . " . " ;
 	}
 	
 }

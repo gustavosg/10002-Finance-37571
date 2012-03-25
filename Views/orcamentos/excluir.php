@@ -7,12 +7,12 @@
 </head>
 
 <body>
-<form action="" name="form" method="post">
+<form action="resultExcluir.php" name="form" method="post">
 	<h1 align="center">Orçamentos à Excluir:</h1>
 	<br>
 	<p align="center">
 		<label align="center">Orçamentos:</label> <input type="text" size="100"
-			maxlength="50" name="nomeOrçamentos" id="nomeOrçamentos" />
+			maxlength="50" name="nomeOrcamento" id="nomeOrcamento" />
 	</p>
 	<br>
 	<p align="center">
