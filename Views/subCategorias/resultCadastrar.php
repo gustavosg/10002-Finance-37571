@@ -11,9 +11,10 @@ $categoriesRepo = $entityManager->getRepository("Categories");
 $categories = $categoriesRepo->findBy(array ('name' => $nomeCategoria ));
 
 $categoryId = 0;
-
+$createdId = '';
 foreach ($categories as $category){
 	$categoryId = $category->getId();
+	$createdId = $category->getCreated();
 }
 
 $subCategoria = new Sub_Categories($categoryId, $nomeSubCategoria);
@@ -21,7 +22,6 @@ $subCategoria->setCategoryId($categoryId);
 $subCategoria->setName($nomeSubCategoria);
 $subCategoria->setCreated(date("Y/m/d H:i:s"));
 
-$categoria->setId($categoryId);
 
 $entityManager->persist($subCategoria);
 
@@ -29,7 +29,6 @@ $entityManager->persist($subCategoria);
  * 
  * Fatal error: Uncaught exception 'Doctrine\ORM\ORMException' with message 'Found entity of type on association SubCategories#categoryId, but expecting Categories' in D:\Projetos\Web\Finance-37571\Doctrine\ORM\UnitOfWork.php on line 711
 ( ! ) Doctrine\ORM\ORMException: Found entity of type on association SubCategories#categoryId, but expecting Categories in D:\Projetos\Web\Finance-37571\Doctrine\ORM\UnitOfWork.php on line 711
- * 
  */
 
 $entityManager->flush();

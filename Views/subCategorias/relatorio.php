@@ -1,9 +1,35 @@
+<?php
+require_once '../../bootstrap.php';
+
+$subCategoria = new Sub_Categories();
+
+$subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
+$listSubCategories = $subCategoriesRepo->findAll();
+
+
+
+function listarTodasSubCategorias($listSubCategories){
+
+	foreach ($listSubCategories as $subCategories)
+	{
+		echo "<tr>";
+		echo "<td>".$subCategories->getId()."</td>";
+		echo "<td>". $subCategories->getName(). "</td>";
+		echo "<td>". $subCategories->getCreated() . "</td>";
+		echo "<td>". $subCategories->getModified(). "</td>";
+		echo "</tr>";
+	}
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
 <meta charset="ISO-8859-1">
-<title>Finance-37571: Cadastramento de Sub-Categoria:</title>
+<title>Finance-37571: Relatório de Sub-Categoria:</title>
 </head>
 
 <body>

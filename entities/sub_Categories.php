@@ -30,16 +30,18 @@ class Sub_Categories {
 	* @var IntegerType:: **/
 	protected $id;
 
-	/** @ManyToOne(targetEntity="Categories")
+	/* 
+	 * TODO Gustavo: Problemas com relacionamento. Perguntar Ítalo 
+	 * //** @ManyToOne(targetEntity="categories")
 	 * @JoinColumn(name="id", referencedColumnName="id")
 	 * Enter description here ...
-	 * @var unknown_type **/
-	protected $categoryId;
+	 * @var unknown_type **/ 
+	 protected $categoryId;
 
 	/** @Column(type="string") **/
 	protected $name;
 
-	/** @Column**/
+	/** @Column **/
 	protected $created;
 
 	/** @Column **/
@@ -76,14 +78,14 @@ class Sub_Categories {
 		return $this->created;
 	}
 	public function setCreated($created){
-		$this->created = new DateTime($created);
+		$this->created = $created;
 	}
 
 	public function getModified(){
 		return $this->modified;
 	}
 	public function setModified($modified){
-		$this->modified= new DateTime($modified);
+		$this->modified= $modified;
 	}
 
 	public function ToString(){
