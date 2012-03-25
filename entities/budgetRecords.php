@@ -28,10 +28,10 @@ class BudgetRecords{
 	/** @Id @GeneratedValue @Column(type="integer") **/
 	protected $id;
 
-	/** @ManyToOne(targetEntity("Budgets") **/
+	/** @ManyToOne(targetEntity="Budgets") **/
 	protected $budgetId;
 
-	/** @ManyToOne(targetEntity("SubCategories") **/
+	/** @ManyToOne(targetEntity="SubCategories") **/
 	protected $subCategoryId;
 
 	/** @Column(type="decimal") **/

@@ -1,3 +1,20 @@
+<?php
+
+require_once '../../bootstrap.php';
+
+$categorias = new Categories();
+
+$categoryRepo = $entityManager->getRepository("Categories");
+$infoCategory = $categoryRepo->findAll();
+
+function listarCategorias($infoCategory){
+	foreach($infoCategory as $categories) {
+		echo "<option >".$categories->getName()."</option>";
+	}
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,22 +24,33 @@
 </head>
 
 <body>
-<form action="../../SQL/crudAccounts.php" name="form" method="post">
-	<h1 align="center">Entre com as informações:</h1>
-	<br>
-	<p align="center">
-		<label align="center">Sub-Categoria:</label> <input type="text" size="100"
-			maxlength="50" name="nomeSub-Categoria" id="nomeSub-Categoria" />
-	</p>
-	<br>
-	<p align="center">
-		<button type="submit" value="submit" name="Enviar"
-			>Enviar</button>
-
-		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposSub-Categorias()">Limpar</button>
+	<form action="resultCadastrar.php" name="form" method="post">
+		<h1 align="center">Entre com as informações:</h1>
 		<br>
-	</p>
+		<p align="center">
+		<table align="center">
+			<tr>
+				<td><label>Selecione uma categoria: </label></td>
+				<td><select name="nomeCategoria">
+						<option />
+						<?php listarCategorias($infoCategory)?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><label>Nome da Sub-Categoria:</label></td>
+				<td><input type="text" size="100" maxlength="50" name="nomeSubCategoria" id="nomeSubCategoria" /></td>
+			</tr>
+
+		</table>
+		</p>
+		<br>
+		<p align="center">
+			<button type="submit" value="submit" name="Enviar">Enviar</button>
+
+			<button type="button" value="Limpar" name="Limpar" onclick="limparCamposSubCategorias()">Limpar</button>
+			
+		</p>
 	</form>
 </body>
 <footer style="position: fixed; right: 3px; bottom: 0px;">

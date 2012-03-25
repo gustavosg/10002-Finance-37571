@@ -19,14 +19,10 @@ function listarContas($posts){
 	}
 }
 
-$conta->getCreated();
-
 function exibirRegistrosConta($post){
 	echo "Informações da conta: <br />";
 	echo "Id da conta: ".$post->getId(). "<br />";
 	echo "Nome : ". $post->getName(). "<br />";
-	
-	// TODO Data
 	echo "Criado em: ". $post->getCreatedToString($post->getCreated()) . "<br />";
 	echo "Modificado em: ". $post->getCreatedToString($post->getModified()). "<br />";
 }

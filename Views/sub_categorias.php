@@ -11,14 +11,13 @@
 	<table align="center" border="2" rules="all" >
 		<tbody>
 			<tr>
-				<td>Cadastrar</td>
-				<td>Excluir</td>
+				<td><li/><a href="subCategorias/cadastrar.php">Cadastrar Conta</a></td>
+				<td><li/><a href="subCategorias/consultar.php">Consultar Conta</a></td>
+				
 			</tr>
-
-
 			<tr>
-				<td>Consultar</td>
-				<td>Relatório</td>
+				<td><li/><a href="subCategorias/excluir.php">Excluir Conta</a></td>
+				<td><li/><a href="subCategorias/relatorio.php">Relatório Conta</a></td>
 
 			</tr>
 
