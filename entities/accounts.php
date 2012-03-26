@@ -65,14 +65,14 @@ class Accounts{
 		return $this->created;
 	}
 	public function setCreated($created){
-		$this->created = new DateTime($created);
+		$this->created = $created;
 	}
 
 	public function getModified(){
 		return $this->modified;
 	}
 	public function setModified($modified){
-		$this->modified =new DateTime($modified);
+		$this->modified = $modified;
 	}
 
 	public function ToString(){

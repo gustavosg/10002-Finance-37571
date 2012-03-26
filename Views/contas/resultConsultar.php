@@ -23,8 +23,8 @@ function exibirRegistrosConta($post){
 	echo "Informações da conta: <br />";
 	echo "Id da conta: ".$post->getId(). "<br />";
 	echo "Nome : ". $post->getName(). "<br />";
-	echo "Criado em: ". $post->getCreatedToString($post->getCreated()) . "<br />";
-	echo "Modificado em: ". $post->getCreatedToString($post->getModified()). "<br />";
+	echo "Criado em: ". $post->getCreated() . "<br />";
+	echo "Modificado em: ". $post->getModified(). "<br />";
 }
 
 ?>
@@ -37,6 +37,8 @@ function exibirRegistrosConta($post){
 <title>Informações da Conta:</title>
 </head>
 <body>
+
+<button onclick="javascript:history.go(-1)">Voltar</button>
 
 </body>
 </html>

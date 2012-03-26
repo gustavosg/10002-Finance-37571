@@ -28,22 +28,22 @@ function listarTodosOrcamentos($budgetsResult){
 </head>
 
 <body>
-<form action="" name="form" method="post">
-<button onclick="history.back()" >Voltar</button>
 
+<button onclick="javascript:history.go(-1)" >Voltar</button>
+
+<form action="" name="form" method="post">
 	<h1 align="center">Orçamentos que foram cadastrados:</h1>
 	<br>
-<table border=1 align=center>
+		<table border=1 align=center>
 			<tr>
-			<td>ID: </td>
-			<td>Nome:</td>
-			<td>Criado em:</td>
-			<td>Modificado em:</td>
+				<td>ID: </td>
+				<td>Nome:</td>
+				<td>Criado em:</td>
+				<td>Modificado em:</td>
 			</tr>
-
-		<?php listarTodosOrcamentos($budgetsResult); ?>
+				<?php listarTodosOrcamentos($budgetsResult); ?>
+				
 		</table>
-
 
 	</form>
 </body>
