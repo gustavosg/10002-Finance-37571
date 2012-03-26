@@ -6,8 +6,6 @@ $subCategoria = new Sub_Categories();
 $subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
 $listSubCategories = $subCategoriesRepo->findAll();
 
-
-
 function listarTodasSubCategorias($listSubCategories){
 
 	foreach ($listSubCategories as $subCategories)
@@ -36,8 +34,8 @@ function listarTodasSubCategorias($listSubCategories){
 <form action="" name="form" method="post">
 	<h1 align="center">Sub-Categorias que foram cadastradas:</h1>
 	<br>
-
-
+	
+	<?php listarTodasSubCategorias($listSubCategories);?>
 
 	</form>
 </body>

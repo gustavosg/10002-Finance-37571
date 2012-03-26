@@ -4,22 +4,9 @@ require_once '../../bootstrap.php';
 $conta = new Accounts();
 
 $repoAccount = $entityManager->getRepository("Accounts");
-$selectAccount = $repoAccount->findAll();
+$accountsResult = $repoAccount->findAll();
 
-
-
-function listarTodasContas($accounts){
-
-	foreach ($accounts as $account)
-	{
-		echo "<tr>";
-		echo "<td>".$account->getId()."</td>";
-		echo "<td>". $account->getName(). "</td>";
-		echo "<td>". $account->getCreated() . "</td>";
-		echo "<td>". $account->getModified(). "</td>";
-		echo "</tr>";
-	}
-}
+$functionsAccounts = new FunctionsAccounts();
 
 ?>
 
@@ -44,7 +31,7 @@ function listarTodasContas($accounts){
 			<td>Modificado em:</td>
 			</tr>
 
-		<?php listarTodasContas($selectAccount); ?>
+		<?php $functionsAccounts->listarTodasContas($accountsResult); ?>
 		</table>
 </p>
 	</form>

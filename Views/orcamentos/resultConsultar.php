@@ -29,15 +29,17 @@ function exibirRegistrosOrcamento($budget){
 		<title>Informações do Orçamento:</title>
 	</head>
 	<body>
+	<button onclick="history.back()" >Voltar</button>
 	
 		<h1 align="center">Orçamento solicitado:</h1>
 			
-		<button onclick="history.back()" >Voltar</button>
-		
-		<br />
-		<br />	
 		
 		<?php listarOrcamentos($budgets);?>
 		
 	</body>
+	<footer style="position: fixed; right: 3px; bottom: 0px;">
+	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
+	PUC Minas - 2011-2012
+</footer>
+	
 </html>

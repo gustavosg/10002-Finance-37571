@@ -17,19 +17,7 @@ foreach ($subCategories as $subCategorie)
 $categoriesRepo = $entityManager->getRepository("Categories");
 $categories = $categoriesRepo->findBy(array ('id' => $idCategoria));
 
-function listarSubCatorias($listCategories){
-	foreach ($listCategories as $categorie){
-		exibirRegistrosSubCategorias($categorie);
-	}
-}
-
-function exibirRegistrosSubCategorias($categorie){
-	echo "Informações da SubCategoria: <br />";
-	echo "Id : ".$categorie->getId(). "<br />";
-	echo "Nome : ". $categorie->getName(). "<br />";
-	echo "Criado em: ". $categorie->getCreated() . "<br />";
-	echo "Modificado em: ". $categorie->getModified(). "<br />";
-}
+$functionsSub_Categories = new FunctionsSub_Categories();
 
 ?>
 
@@ -50,7 +38,7 @@ function exibirRegistrosSubCategorias($categorie){
 <?php 
 
 // TODO Gustavo: Conferir funcionamento de listar SubCategorias (Antes é necessário de Cadastrar a SubCategoria funcionar)
-listarSubCatorias($subCategories);
+$functionsSub_Categories->exibirRegistrosSubCategorias($subCategories);
 
 foreach ($categories as $categorie)
 	echo $categorie->ToString();

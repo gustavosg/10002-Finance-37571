@@ -1,3 +1,24 @@
+<?php 
+require_once '../../bootstrap.php';
+
+$orcamento = new Budgets();
+
+$budgetsRepo = $entityManager->getRepository("Budgets");
+$budgetsResult = $budgetsRepo->findAll();
+
+function listarTodosOrcamentos($budgetsResult){
+	
+	foreach ($budgetsResult as $budget)
+	echo "<tr>";
+	echo "<td>".$budget->getId()."</td>";
+	echo "<td>". $budget->getName(). "</td>";
+	echo "<td>". $budget->getCreated() . "</td>";
+	echo "<td>". $budget->getModified(). "</td>";
+	echo "</tr>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +29,20 @@
 
 <body>
 <form action="" name="form" method="post">
-	<h1 align="center">Orçamentoss que foram cadastradas:</h1>
-	<br>
+<button onclick="history.back()" >Voltar</button>
 
+	<h1 align="center">Orçamentos que foram cadastrados:</h1>
+	<br>
+<table border=1 align=center>
+			<tr>
+			<td>ID: </td>
+			<td>Nome:</td>
+			<td>Criado em:</td>
+			<td>Modificado em:</td>
+			</tr>
+
+		<?php listarTodosOrcamentos($budgetsResult); ?>
+		</table>
 
 
 	</form>
