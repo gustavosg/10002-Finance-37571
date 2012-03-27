@@ -12,7 +12,6 @@ $id = 0;
 $nome = '';
 $criacao = '';
 $modificacaoAnterior = '';
-$modificacao = date("Y/m/d H:i:s");
 
 foreach ($accountsResult as $account)
 {
@@ -28,28 +27,28 @@ foreach ($accountsResult as $account)
 		<title>Finance-37571: Edição de Conta:</title>
 	</head>
 	<body>
-	<form action="resultEditarConta.php" method="post">
+	<form action="resultEditarConta.php" method="post" name="form">
 		<h1 align="center">Edição de Conta:</h1>
 		<p align="center" />
 			<table >
 				<tr>
 					<td><label>ID:</label></td>
-					<td><input type="text" size="10px" readonly="readonly" disabled="disabled" value="<?php echo $id ?>" /></td>
+					<td><input type="text" size="10px" name="idConta" readonly="readonly" value="<?php echo $id ?>" /></td>
 				</tr>
 				
 				<tr>
 					<td><label style="color:red; " >Nome:</label></td>
-					<td><input type="text" size="50px" value="<?php echo $nome ?>" /></td>
+					<td><input type="text" size="50px" name="nomeConta" value="<?php echo $nome ?>" /></td>
 				</tr>
 				
 				<tr>
 					<td><label>Data de Criação:</label></td>
-					<td><input type="text" size="50px" readonly="readonly" disabled="disabled" value="<?php echo $criacao ?>" /></td>
+					<td><input type="text" size="50px" name="contaCriada" readonly="readonly"  value="<?php echo $criacao ?>" /></td>
 				</tr>
 				
 				<tr>
 					<td><label>Data de Modificação:</label></td>
-					<td><input type="text" size="50px" readonly="readonly" disabled="disabled" value="<?php echo $modificacaoAnterior ?>" /></td>
+					<td><input type="text" size="50px" name="contaModificada" readonly="readonly"  value="<?php echo $modificacaoAnterior ?>" /></td>
 				</tr>
 				
 			</table>

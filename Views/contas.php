@@ -19,8 +19,8 @@
 				<td><li/><a href="contas/excluir.php">Excluir Conta</a></td>
 			</tr>
 			
-			<td><li/><a href="contas/relatorio.php">Relatório Conta</a></td>
-			<td><li/><a href="contas/relatorioPersonalizado.php">Relatório Personalizado:</a></td>
+			<td colspan=2><li/><a href="contas/relatorio.php">Relatório Conta</a></td>
+			
 		</tbody>
 	</table>
 </body>

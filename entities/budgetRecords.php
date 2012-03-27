@@ -28,7 +28,7 @@ class BudgetRecords{
 	/** @Id @GeneratedValue @Column(type="integer") **/
 	protected $id;
 
-	/** @ManyToOne(targetEntity="Budgets") **/
+	/** @ManyToOne(targetEntity="Budgets") referencedBy="id" **/
 	protected $budgetId;
 
 	/** @ManyToOne(targetEntity="SubCategories") **/

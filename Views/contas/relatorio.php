@@ -3,41 +3,37 @@ require_once '../../bootstrap.php';
 
 $conta = new Accounts();
 
-$repoAccount = $entityManager->getRepository("Accounts");
-$accountsResult = $repoAccount->findAll();
+$accountRepo = $entityManager->getRepository("Accounts");
+$accountsResult = $accountRepo->findAll();
 
 $functionsAccounts = new FunctionsAccounts();
 
 ?>
 
-<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" src="../scripts/functions.js"></script>
-<meta charset="ISO-8859-1">
-<title>Finance-37571: Relatório de Conta:</title>
-</head>
-
-<body>
-	<form action="" name="form" method="post">
-		<h1 align="center">Contas que foram cadastradas:</h1>
-		<br>
-		<p align="center">
-		<table border=1 align=center>
+	<head>
+		<title>Finance-37571: Relatório de Contas Cadastradas</title>
+	</head>
+	<body>
+	<a href="../">Voltar para menu principal</a>
+		<h1 align="center">Relatório de Contas Cadastradas:</h1>
+	
+		<table align="center" border=2>
 			<tr>
-			<td>ID: </td>
-			<td>Nome:</td>
-			<td>Criado em:</td>
-			<td>Modificado em:</td>
+				<td>ID:</td>
+				<td>Nome:</td>
+				<td>Criada em:</td>
+				<td>Modificada em:</td>
 			</tr>
-
-		<?php $functionsAccounts->listarTodasContas($accountsResult); ?>
+			
+			<?php $functionsAccounts->listarTodasContas($accountsResult);?>
+	
 		</table>
-</p>
-	</form>
-</body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+	
+	</body>
+	<footer style="position: fixed; right: 3px; bottom: 0px;">
+		Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
+		PUC Minas - 2011-2012
+	</footer>
+
 </html>

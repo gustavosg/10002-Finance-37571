@@ -1,6 +1,21 @@
 <?php
 require_once '../../bootstrap.php';
 
+$idConta = $_POST['idConta'];
+ECHO $idConta;
+$nomeConta = $_POST['nomeConta'];
+$contaCriada = $_POST['contaCriada'];
+$contaModificada = date("Y/m/d H:i:s");
+
+$conta = new Accounts($idConta, null);
+
+$conta->setName($nomeConta);
+$conta->setCreated($contaCriada);
+$conta->setModified($contaModificada);
+
+$entityManager->merge($conta);
+$entityManager->flush();
+
 ?>
 
 <html>
