@@ -41,11 +41,11 @@ class FunctionsAccounts{
 	 * Lista contas cadastradas em objetos do tipo radio button.
 	 * @param $accountsResult = lista de contas obtidas em um select
 	 */
-	function listarContasEdicao($accountsResult){
+	public function listarContasEdicao($accountsResult){
 		foreach ($accountsResult as $account)
 		{
 			echo "<tr>";
-			echo "<td> <input type=RADIO name=selecaoConta id=selecaoConta value='".$account->getName()."'></input></td>";
+			echo "<td> <input type='RADIO' name='nomeConta' value='".$account->getName()."'/></td>";
 			echo "<td>".$account->getId()."</td>";
 			echo "<td>". $account->getName(). "</td>";
 			echo "</tr>";
@@ -56,5 +56,6 @@ class FunctionsAccounts{
 		foreach ($accountsResult as $result)
 		echo "<option >".$result->getName()."</option>";
 	}
+	
 }
 ?>

@@ -19,25 +19,30 @@ $functionsAccounts = new FunctionsAccounts();
 	</head>
 
 	<body>
-	<form action="editarConta.php">
-		<h1 align="center">Edição de Conta:</h1>
+	<form action="editarConta.php" method="post">
+		<h1 align="center">Seleção de conta para edição:</h1>
 		
 		<table align="center" border="2" style="table-layout: auto; position: static; float: inherit;">
-		<tr>
-		<td>Seleção:</td>
-		<td width="50px">ID:</td>
-		<td width="150px">Conta:</td>
-		</tr>
+			<tr>
+				<td>Seleção:</td>
+				<td width="50px">ID:</td>
+				<td width="150px">Conta:</td>
+			</tr>
 
-			<?php $functionsAccounts->listarContasEdicao($accountsResult);?>
+			<?php // $functionsAccounts->listarContasEdicao($accountsResult);?>
+			
+			<?php foreach ($accountsResult as $account)
+		{
+			echo "<tr>";
+			echo "<td> <input type=RADIO name='nomeConta' value='".$account->getName()."'></td>";
+			echo "<td>".$account->getId()."</td>";
+			echo "<td>". $account->getName(). "</td>";
+			echo "</tr>";
+		}?>
 			
 		</table>
-	
-	<input type="hidden" name="nomeConta">
-	
 	<p align="center">
-		<button type="submit" value="submit" name="Alterar"
-			>Alterar</button>
+		<button type="submit" value="submit" name="Alterar"	>Alterar</button>
 	
 	</p>
 	</form>
