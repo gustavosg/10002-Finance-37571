@@ -2,9 +2,10 @@
 
 require_once '../../bootstrap.php';
 
-$contaSelecionada = $_POST['NomeConta'];
+$contaSelecionada = $_POST['nomeConta'];
 
-$conta = new Accounts();
+echo $contaSelecionada;
+$conta = new Accounts(null, $contaSelecionada);
 
 $accountRepo = $entityManager->getRepository("Accounts");
 $accountsResult = $accountRepo->findAll();

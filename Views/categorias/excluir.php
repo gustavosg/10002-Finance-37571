@@ -1,3 +1,13 @@
+<?php
+require_once '../../bootstrap.php';
+
+$categoriesRepo = $entityManager->getRepository("Categories");
+$categoriesResult = $categoriesRepo->findAll();
+
+$functionsCategories = new FunctionsCategories(); 
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +21,14 @@
 	<h1 align="center">Categoria à Excluir:</h1>
 	<br>
 	<p align="center">
-		<label align="center">Categoria:</label> <input type="text" size="100"
-			maxlength="50" name="nomeCategoria" id="nomeCategoria" />
+		<label align="center">Categoria:</label> 
+			
+					<select name="nomeCategoria">
+		<option />
+
+			<?php $functionsCategories->listarCategorias($categoriesResult);?>
+			</select>
+		
 	</p>
 	<br>
 	<p align="center">

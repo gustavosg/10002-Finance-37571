@@ -21,8 +21,13 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 
 class FunctionsCategories{
-	
-	
+
+	function listarCategorias($categoriesResult){
+		foreach($categoriesResult as $categorie) {
+			echo "<option >".$categorie->getName()."</option>";
+		}
+	}
+
 }
 
 ?>

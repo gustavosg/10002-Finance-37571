@@ -37,6 +37,12 @@ class Categories {
 	/** @Column **/
 	protected $modified;
 
+	// Construtor:
+	public function  __construct($id = null, $name = null){
+		$this->id = $id;
+		$this->name=$name;		
+	}
+	
 	// Modificadores de acesso:
 
 	public function getId(){

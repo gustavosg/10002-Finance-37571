@@ -15,6 +15,7 @@ $functionsAccounts = new FunctionsAccounts();
 
 	<head>
 		<title>Finance-37571: Edição de Conta:</title>
+		<script type="text/javascript" src="../../functions/functions.js"></script>
 	</head>
 
 	<body>
@@ -29,8 +30,10 @@ $functionsAccounts = new FunctionsAccounts();
 		</tr>
 
 			<?php $functionsAccounts->listarContasEdicao($accountsResult);?>
-		
+			
 		</table>
+	
+	<input type="hidden" name="nomeConta">
 	
 	<p align="center">
 		<button type="submit" value="submit" name="Alterar"

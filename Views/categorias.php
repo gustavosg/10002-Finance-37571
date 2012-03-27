@@ -12,11 +12,18 @@
 		<tbody>
 			<tr>
 				<td><li/><a href="categorias/cadastrar.php">Cadastrar Categoria</a></td>
-				<td><li/><a href="categorias/excluir.php">Excluir Categoria</a></td>
+				<td><li/><a href="categorias/consultar.php">Consultar Categoria</a></td>
+				
 			</tr>
 			<tr>
-				<td><li/><a href="categorias/consultar.php">Consultar Categoria</a></td>
-				<td><li/><a href="categorias/relatorio.php">Relatório Categoria</a></td>
+				
+				<td><li/><a href="categorias/editar.php">Editar Categoria</a></td>
+				<td><li/><a href="categorias/excluir.php">Excluir Categoria</a></td>
+			</tr>
+			
+			<td><li/><a href="categorias/relatorio.php">Relatório Categoria</a></td>
+			<td><li/><a href="categorias/relatorioPersonalizado.php">Relatório Personalizado:</a>
+			</td>
 
 			</tr>
 
