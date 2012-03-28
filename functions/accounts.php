@@ -21,9 +21,12 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 class FunctionsAccounts{
 
-	/*
+	
+	/**
 	 * Retorna todas as contas registradas, em formato table.
-	*/
+	 * @param Object List entity type $accounts
+	 */
+	
 	function listarTodasContas($accountsResult){
 		foreach ($accountsResult as $account)
 		{
@@ -37,9 +40,8 @@ class FunctionsAccounts{
 	}
 
 	/**
-	 *
 	 * Lista contas cadastradas em objetos do tipo radio button.
-	 * @param $accountsResult = lista de contas obtidas em um select
+	 * @param Object List entity type $accounts
 	 */
 	public function listarContasEdicao($accountsResult){
 		foreach ($accountsResult as $account)

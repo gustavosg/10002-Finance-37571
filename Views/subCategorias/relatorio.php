@@ -1,6 +1,9 @@
 <?php
 require_once '../../bootstrap.php';
 
+
+$functionsSub_Categories = new FunctionsSub_Categories();
+
 $categoria = new Categories();
 
 $categoriesRepo = $entityManager->getRepository("Categories");
@@ -11,21 +14,6 @@ $subCategoria = new Sub_Categories($categoria);
 
 $subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
 $listSubCategories = $subCategoriesRepo->findAll();
-
-function listarTodasSubCategorias($listSubCategories){
-
-	foreach ($listSubCategories as $subCategories)
-	{
-		echo "<tr>";
-		echo "<td>".$subCategories->getId()."</td>";
-		echo "<td>". $subCategories->getName(). "</td>";
-		echo "<td>". $subCategories->getCreated() . "</td>";
-		echo "<td>". $subCategories->getModified(). "</td>";
-		echo "</tr>";
-		
-		echo $subCategories;
-	}
-}
 
 ?>
 
@@ -50,7 +38,7 @@ function listarTodasSubCategorias($listSubCategories){
 				<td>Modificação</td>
 			</tr>
 			
-	<?php listarTodasSubCategorias($listSubCategories);?>
+	<?php $functionsSub_Categories->listarTodasSubCategorias($listSubCategories);?>
 </table>
 	</form>
 </body>
