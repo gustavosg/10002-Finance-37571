@@ -25,7 +25,7 @@ class Categories {
 
 	// Fields
 
-	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity="Sub_Categories", mappedBy="categoryId") **/
+	/** @Id @GeneratedValue @Column(type="integer") **/
 	protected $id;
 
 	/** @Column(type="string") **/
@@ -37,6 +37,9 @@ class Categories {
 	/** @Column **/
 	protected $modified;
 
+	/** @OneToMany(targetEntity="Sub_Categories", mappedBy="category") */
+	protected  $subCategory;
+	
 	// Construtor:
 	public function  __construct($id = null, $name = null){
 		$this->id = $id;

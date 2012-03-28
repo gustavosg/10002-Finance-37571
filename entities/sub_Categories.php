@@ -25,18 +25,8 @@ class Sub_Categories {
 
 	// TODO Gustavo: Este mapeamento me deixou bem confuso, como será feito?
 	/** @Id @GeneratedValue @Column(type="integer")
-	* @OneToMany(targetEntity="Expenditure"), @OneToMany(targetEntity="BudgetRecords")
-	* Enter description here ...
-	* @var IntegerType:: **/
+		* @var IntegerType:: **/
 	protected $id;
-
-	/* 
-	 * TODO Gustavo: Problemas com relacionamento. Perguntar Ítalo 
-	 * //** @ManyToOne(targetEntity="categories")
-	 * @JoinColumn(name="id", referencedColumnName="id")
-	 * Enter description here ...
-	 * @var unknown_type **/ 
-	 protected $categoryId;
 
 	/** @Column(type="string") **/
 	protected $name;
@@ -46,10 +36,13 @@ class Sub_Categories {
 
 	/** @Column **/
 	protected $modified;
+	
+	/** @ManyToOne(targetEntity="categories", cascade="all") **/
+	protected $category;
 
 	// TODO Gustavo: fazer constructor.
-	public function __construct($categoryId = null,  $name = null){
-		$this->categoryId = $categoryId;
+	public function __construct(Categories $categories,  $name = null){
+		$this->category = $categories;
 		$this->name = $name;
 	}
 
@@ -88,8 +81,8 @@ class Sub_Categories {
 		$this->modified= $modified;
 	}
 
-	public function ToString(){
-		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ".  $this->created == null? "-" : $this->created ." , ". $this->modified == null? "-":$this->modified . " . " ;
+	public function __toString(){
+		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ".  ($this->created == null? "-" : $this->created) ." , ". ($this->modified == null? "-":$this->modified) . " . " ;
 	}
 }
 ?>

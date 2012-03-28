@@ -9,7 +9,7 @@ $infoCategory = $categoryRepo->findAll();
 
 function listarCategorias($infoCategory){
 	foreach($infoCategory as $categories) {
-		echo "<option >".$categories->getName()."</option>";
+		echo "<option value='".$categories->getId()."' >".$categories->getName()."</option>";
 	}
 }
 
@@ -31,7 +31,7 @@ function listarCategorias($infoCategory){
 		<table align="center">
 			<tr>
 				<td><label>Selecione uma categoria: </label></td>
-				<td><select name="nomeCategoria">
+				<td><select name="idCategoria">
 						<option />
 						<?php listarCategorias($infoCategory)?>
 					</select>

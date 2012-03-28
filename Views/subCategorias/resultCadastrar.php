@@ -2,36 +2,34 @@
 
 require_once "../../bootstrap.php";
 
-$nomeCategoria = $_POST['nomeCategoria'];
+$idCategoria = $_POST['idCategoria'];
 $nomeSubCategoria = $_POST['nomeSubCategoria'];
 
-$categoria = new Categories();
+$categoria = new Categories($idCategoria, null);
 
 $categoriesRepo = $entityManager->getRepository("Categories");
-$categories = $categoriesRepo->findBy(array ('name' => $nomeCategoria ));
+$categoriesResult = $categoriesRepo->findBy(array('id' => $idCategoria));
 
-$categoryId = 0;
-$createdId = '';
-foreach ($categories as $category){
-	$categoryId = $category->getId();
-	$createdId = $category->getCreated();
+$nomeCategoria = '';
+$criacaoCategoria = '';
+$modificacaoCategoria = '';
+
+foreach ($categoriesResult as $categorie)
+{
+	$nomeCategoria = $categorie->getName();
+	$criacaoCategoria = $categorie->getCreated();
+	$modificacaoCategoria = $categorie->getModified();
 }
 
-$subCategoria = new Sub_Categories($categoryId, $nomeSubCategoria);
-$subCategoria->setCategoryId($categoryId);
+$categoria->setName($nomeCategoria);
+$categoria->setCreated($criacaoCategoria);
+$categoria->setModified($modificacaoCategoria);
+$subCategoria = new Sub_Categories($categoria, $nomeSubCategoria);
+
 $subCategoria->setName($nomeSubCategoria);
 $subCategoria->setCreated(date("Y/m/d H:i:s"));
 
 
-$entityManager->persist($subCategoria);
-
-/* TODO Gustavo: Verificar este erro:
- * 
- * Fatal error: Uncaught exception 'Doctrine\ORM\ORMException' with message 'Found entity of type on association SubCategories#categoryId, but expecting Categories' in D:\Projetos\Web\Finance-37571\Doctrine\ORM\UnitOfWork.php on line 711
-( ! ) Doctrine\ORM\ORMException: Found entity of type on association SubCategories#categoryId, but expecting Categories in D:\Projetos\Web\Finance-37571\Doctrine\ORM\UnitOfWork.php on line 711
- */
-
-$entityManager->flush();
 
 ?>
 
@@ -40,14 +38,18 @@ $entityManager->flush();
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
 <meta charset="ISO-8859-1">
-<title>Finance-37571: Cadastramento de Conta:</title>
+<title>Finance-37571: Cadastramento de SubCategoria:</title>
 </head>
 
 <body>
 	<form action="" name="form" method="post">
-		<h1 align="center">Conta Cadastrada:</h1>
+		<h1 align="center">SubCategoria Cadastrada:</h1>
 		
+<?php $subCategoria->ToString();
+$entityManager->merge($subCategoria);
 
+$entityManager->flush();
+?>
 
 	</form>
 </body>

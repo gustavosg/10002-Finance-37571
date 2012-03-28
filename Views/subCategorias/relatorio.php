@@ -1,7 +1,13 @@
 <?php
 require_once '../../bootstrap.php';
 
-$subCategoria = new Sub_Categories();
+$categoria = new Categories();
+
+$categoriesRepo = $entityManager->getRepository("Categories");
+
+$categoriesResult = $categoriesRepo->findAll();
+
+$subCategoria = new Sub_Categories($categoria);
 
 $subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
 $listSubCategories = $subCategoriesRepo->findAll();
@@ -16,11 +22,12 @@ function listarTodasSubCategorias($listSubCategories){
 		echo "<td>". $subCategories->getCreated() . "</td>";
 		echo "<td>". $subCategories->getModified(). "</td>";
 		echo "</tr>";
+		
+		echo $subCategories;
 	}
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -31,12 +38,20 @@ function listarTodasSubCategorias($listSubCategories){
 </head>
 
 <body>
-<form action="" name="form" method="post">
-	<h1 align="center">Sub-Categorias que foram cadastradas:</h1>
-	<br>
-	
-	<?php listarTodasSubCategorias($listSubCategories);?>
+	<form action="" name="form" method="post">
+		<h1 align="center">Sub-Categorias que foram cadastradas:</h1>
+		<br>
+		<table align="center" border=2>
 
+			<tr>
+				<td>ID</td>
+				<td>Nome</td>
+				<td>Criação</td>
+				<td>Modificação</td>
+			</tr>
+			
+	<?php listarTodasSubCategorias($listSubCategories);?>
+</table>
 	</form>
 </body>
 <footer style="position: fixed; right: 3px; bottom: 0px;">
