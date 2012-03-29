@@ -76,7 +76,7 @@ class Categories {
 		$this->modified= $modified;
 	}
 
-	public function ToString(){
+	public function __toString(){
 		return "Informações da Categoria: <br /> ID: [".($this->id==null?"-":$this->id)."], Nome: " . $this->name . " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . " . " ;
 	}
 }

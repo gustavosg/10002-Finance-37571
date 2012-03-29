@@ -1,7 +1,6 @@
 <?php
 require_once '../../bootstrap.php';
 
-
 $functionsSub_Categories = new FunctionsSub_Categories();
 
 $categoria = new Categories();
@@ -39,6 +38,7 @@ $listSubCategories = $subCategoriesRepo->findAll();
 			</tr>
 			
 	<?php $functionsSub_Categories->listarTodasSubCategorias($listSubCategories);?>
+	
 </table>
 	</form>
 </body>

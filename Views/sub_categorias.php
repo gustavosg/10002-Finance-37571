@@ -1,3 +1,10 @@
+<?php 
+require_once "../bootstrap.php";
+
+ $pageMaker = new PageMaker();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,4 +36,10 @@
 
 
 </body>
+
+<?php 
+//Imprime o Footer da página
+$pageMaker->printFooter(); 
+
+?>
 </html>

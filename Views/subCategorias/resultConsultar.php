@@ -2,17 +2,18 @@
 
 require_once "../../bootstrap.php";
 
+$pageMaker = new PageMaker();
+
 $nomeSubCategoria = $_POST['nomeSubCategoria'];
 
-$subCategoria = new Sub_Categories();
+$categoria = new Categories();
+
+$subCategoria = new Sub_Categories($categoria, $nomeSubCategoria);
 
 $subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
 $subCategories = $subCategoriesRepo->findBy(array ('name'=> $nomeSubCategoria));
 
 $idCategoria = 0;
-
-foreach ($subCategories as $subCategorie)
-	$idCategoria = $subCategorie->getCategoryId();
 
 $categoriesRepo = $entityManager->getRepository("Categories");
 $categories = $categoriesRepo->findBy(array ('id' => $idCategoria));
@@ -37,17 +38,17 @@ $functionsSub_Categories = new FunctionsSub_Categories();
 
 <?php 
 
-// TODO Gustavo: Conferir funcionamento de listar SubCategorias (Antes é necessário de Cadastrar a SubCategoria funcionar)
-$functionsSub_Categories->exibirRegistrosSubCategorias($subCategories);
+$functionsSub_Categories->exibirSubCategorias($subCategories);
 
 foreach ($categories as $categorie)
-	echo $categorie->ToString();
+	echo $categorie->__toString();
 ?>
 
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php 
+//Imprime o Footer da página
+$pageMaker->printFooter();
+
+?>
 </html>

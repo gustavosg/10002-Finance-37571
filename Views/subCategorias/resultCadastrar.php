@@ -2,6 +2,8 @@
 
 require_once "../../bootstrap.php";
 
+$pageMaker = new PageMaker();
+
 $idCategoria = $_POST['idCategoria'];
 $nomeSubCategoria = $_POST['nomeSubCategoria'];
 
@@ -29,8 +31,6 @@ $subCategoria = new Sub_Categories($categoria, $nomeSubCategoria);
 $subCategoria->setName($nomeSubCategoria);
 $subCategoria->setCreated(date("Y/m/d H:i:s"));
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -43,9 +43,9 @@ $subCategoria->setCreated(date("Y/m/d H:i:s"));
 
 <body>
 	<form action="" name="form" method="post">
-		<h1 align="center">SubCategoria Cadastrada:</h1>
+		<h1 align="left">SubCategoria Cadastrada!</h1>
 		
-<?php $subCategoria->ToString();
+<?php $subCategoria->__toString();
 $entityManager->merge($subCategoria);
 
 $entityManager->flush();
@@ -53,8 +53,10 @@ $entityManager->flush();
 
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+
+<?php 
+//Imprime o Footer da página
+$pageMaker->printFooter();
+
+?>
 </html>

@@ -37,7 +37,7 @@ class Sub_Categories {
 	/** @Column **/
 	protected $modified;
 	
-	/** @ManyToOne(targetEntity="categories", cascade="all") **/
+	/** @ManyToOne(targetEntity="categories", cascade="merge") **/
 	protected $category;
 
 	// TODO Gustavo: fazer constructor.
@@ -51,13 +51,6 @@ class Sub_Categories {
 	}
 	public function setId($id){
 		$this->id= $id;
-	}
-
-	public function getCategoryId(){
-		return $this->categoryId;
-	}
-	public function setCategoryId($categoryId){
-		$this->categoryId= $categoryId;
 	}
 
 	public function getName(){

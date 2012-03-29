@@ -1,19 +1,23 @@
 <?php
 require_once '../../bootstrap.php';
 
+$categoria = new Categories();
 
 $nomeSubCategoria = $_POST['nomeSubCategoria'];
 
-$subCategoria = new Accounts(null, $nomeSubCategoria);
+$subCategoria = new Sub_Categories($categoria, $nomeSubCategoria);
 
+$subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
+$subCategoriesResult = $subCategoriesRepo->findBy(array ('name' => $subCategoria->getName()));
 
-$accountRepo = $entityManager->getRepository("Sub_Categories");
-$accounts = $accountRepo->findBy(array ('name' => $subCategoria->getName()));
+$idSubCategoria = 0;
 
-// TODO Perguntar ao Ítalo porque não remove, sendo que a explicação do site é a mesma:
-// http://docs.doctrine-project.org/projects/doctrine-orm/en/2.0.x/reference/working-with-objects.html
-
-$entityManager->remove($accounts);
+foreach ($subCategoriesResult as $subCategories){
+	$idSubCategoria = $subCategories->getId();
+	$subCategoriesResult = $subCategoriesRepo->find($idSubCategoria);
+	$entityManager->remove($subCategoriesResult);
+	
+}
 $entityManager->flush();
 
 
@@ -26,9 +30,7 @@ $entityManager->flush();
 <body>
 
 	<form action="">
-		<h1>SubCategoria excluída:</h1>
-
-
+		<h1>SubCategoria excluída!</h1>
 
 	</form>
 

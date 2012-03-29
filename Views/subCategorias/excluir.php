@@ -1,3 +1,10 @@
+<?php 
+require_once '../../bootstrap.php';
+
+$pageMaker = new PageMaker();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +14,12 @@
 </head>
 
 <body>
-<form action="" name="form" method="post">
+<form action="resultExcluir.php" name="form" method="post">
 	<h1 align="center">Sub-Categoria à Excluir:</h1>
 	<br>
 	<p align="center">
 		<label align="center">Sub-Categoria:</label> <input type="text" size="100"
-			maxlength="50" name="nomeSub-Categoria" id="nomeSub-Categoria" />
+			maxlength="50" name="nomeSubCategoria" id="nomeSubCategoria" />
 	</p>
 	<br>
 	<p align="center">
@@ -25,8 +32,9 @@
 	</p>
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php 
+//Imprime o Footer da página
+$pageMaker->printFooter();
+
+?>
 </html>

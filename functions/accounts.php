@@ -26,7 +26,6 @@ class FunctionsAccounts{
 	 * Retorna todas as contas registradas, em formato table.
 	 * @param Object List entity type $accounts
 	 */
-	
 	function listarTodasContas($accountsResult){
 		foreach ($accountsResult as $account)
 		{
@@ -54,6 +53,10 @@ class FunctionsAccounts{
 		}
 	}
 
+	/**
+	 * Retorna Nome da Conta em formato Option para ListBox (<Select>)
+	 * @param Object List entity type $accounts
+	 */
 	function exibirListaSelectContas($accountsResult){
 		foreach ($accountsResult as $result)
 		echo "<option >".$result->getName()."</option>";
