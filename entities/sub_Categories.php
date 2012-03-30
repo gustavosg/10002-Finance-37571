@@ -25,7 +25,7 @@ class Sub_Categories {
 
 	// TODO Gustavo: Este mapeamento me deixou bem confuso, como será feito?
 	/** @Id @GeneratedValue @Column(type="integer")
-		* @var IntegerType:: **/
+	* @var IntegerType:: **/
 	protected $id;
 
 	/** @Column(type="string") **/
@@ -36,7 +36,7 @@ class Sub_Categories {
 
 	/** @Column **/
 	protected $modified;
-	
+
 	/** @ManyToOne(targetEntity="categories", cascade="merge") **/
 	protected $category;
 
@@ -75,7 +75,8 @@ class Sub_Categories {
 	}
 
 	public function __toString(){
-		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ".  ($this->created == null? "-" : $this->created) ." , ". ($this->modified == null? "-":$this->modified) . " . " ;
+		return "ID: [".($this->id==null?"-":$this->id)."], Nome:  " . ($this->name ). " , Data de Criação
+			".  ($this->created == null? "-" : $this->created) ." , Data de Modificação: ". ($this->modified == null? "-":$this->modified) . " . " ;
 	}
 }
 ?>

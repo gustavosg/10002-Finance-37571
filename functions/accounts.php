@@ -21,7 +21,7 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 class FunctionsAccounts{
 
-	
+
 	/**
 	 * Retorna todas as contas registradas, em formato table.
 	 * @param Object List entity type $accounts
@@ -46,7 +46,7 @@ class FunctionsAccounts{
 		foreach ($accountsResult as $account)
 		{
 			echo "<tr>";
-			echo "<td> <input type='RADIO' name='nomeConta' value='".$account->getName()."'/></td>";
+			echo "<td> <input type=RADIO name='nomeConta' value='".$account->getName()."'></td>";
 			echo "<td>".$account->getId()."</td>";
 			echo "<td>". $account->getName(). "</td>";
 			echo "</tr>";
@@ -61,6 +61,6 @@ class FunctionsAccounts{
 		foreach ($accountsResult as $result)
 		echo "<option >".$result->getName()."</option>";
 	}
-	
+
 }
 ?>

@@ -23,7 +23,7 @@
 class FunctionsSub_Categories{
 
 	/**
-	 * Para cada  SubCategoria, ele mostrará as informações 
+	 * Para cada  SubCategoria, ele mostrará as informações
 	 * @param Object List entity type $Categories
 	 */
 	function exibirSubCategorias($listCategories){
@@ -48,6 +48,22 @@ class FunctionsSub_Categories{
 			echo "<td>". $subCategories->getName(). "</td>";
 			echo "<td>". $subCategories->getCreated() . "</td>";
 			echo "<td>". $subCategories->getModified(). "</td>";
+			echo "</tr>";
+		}
+	}
+
+	/**
+	 * 
+	 * Edita todas as Subcategorias registradas
+	 * @param Object List entity type $SubCategories
+	 */
+	function editarSubCategoria($listSubCategories){
+		foreach ($listSubCategories as $subCategorie)
+		{
+			echo "<tr>";
+			echo "<td> <input type=RADIO name='nomeSubCategorias' value='".$subCategorie->getName()."'></td>";
+			echo "<td>".$subCategorie->getId()."</td>";
+			echo "<td>". $subCategorie->getName(). "</td>";
 			echo "</tr>";
 		}
 	}

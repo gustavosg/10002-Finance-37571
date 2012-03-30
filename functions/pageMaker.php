@@ -24,7 +24,7 @@ class PageMaker{
 
 	public function printFooter(){
 		echo "<footer style='position: fixed; right: 3px; bottom: 0px;'>
-			Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
+			Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - 38441 <br>
 			PUC Minas - 2011-2012
 			</footer>";
 	}

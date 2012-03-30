@@ -12,13 +12,7 @@ $subCategoriesResult = $subCategoriesRepo->findBy(array ('name' => $subCategoria
 
 $idSubCategoria = 0;
 
-foreach ($subCategoriesResult as $subCategories){
-	$idSubCategoria = $subCategories->getId();
-	$subCategoriesResult = $subCategoriesRepo->find($idSubCategoria);
-	$entityManager->remove($subCategoriesResult);
-	
-}
-$entityManager->flush();
+
 
 
 ?>
@@ -31,6 +25,20 @@ $entityManager->flush();
 
 	<form action="">
 		<h1>SubCategoria excluída!</h1>
+		
+		<?php 
+		
+		
+		foreach ($subCategoriesResult as $subCategories){
+			$idSubCategoria = $subCategories->getId();
+			echo $subCategories->__toString()."<br />";
+			$subCategoriesResult = $subCategoriesRepo->find($idSubCategoria);
+			$entityManager->remove($subCategoriesResult);
+		
+		}
+		
+		$entityManager->flush();
+		?>
 
 	</form>
 
