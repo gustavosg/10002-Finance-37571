@@ -1,26 +1,37 @@
 <?php
-
+/*------------------------------------------------------------------------------------------------------------------------
+ * DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        resultConsultar.php
+* Descrição:   Classe para consultar dados de conta
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        27/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
 require_once "../../bootstrap.php";
 
+// Capturando variáveis da tela anterior
 $nomeOrcamento = $_POST["nomeOrcamento"];
 
+// Instanciando Classes
 $orcamento = new Budgets($nomeOrcamento);
+$functionsBudgets = new FunctionsBudgets();
+$pageMaker= new PageMaker();
 
+// Funções do Doctrine
 $budgetsRepo = $entityManager->getRepository("budgets");
-$budgets = $budgetsRepo->findBy(array ('name' => $orcamento->getName()));
-
-function listarOrcamentos($budgets){
-	foreach ($budgets as $budget)
-		exibirRegistrosOrcamento($budget);
-}
-
-function exibirRegistrosOrcamento($budget){
-	echo "Informações do orcamento: <br />";
-	echo "Id do orcamento: ".$budget->getId(). "<br />";
-	echo "Nome : ". $budget->getName(). "<br />";
-	echo "Criado em: ". $budget->getCreated() . "<br />";
-	echo "Modificado em: ". $budget->getModified(). "<br />";
-}
+$budgetsResult = $budgetsRepo->findBy(array ('name' => $orcamento->getName()));
 
 ?>
 
@@ -29,17 +40,20 @@ function exibirRegistrosOrcamento($budget){
 		<title>Informações do Orçamento:</title>
 	</head>
 	<body>
-	<button onclick="history.back()" >Voltar</button>
-	
-		<h1 align="center">Orçamento solicitado:</h1>
-			
-		
-		<?php listarOrcamentos($budgets);?>
-		
+	<h1 align="center">Orçamento solicitado:</h1>
+
+	<p align="center">
+	<table border=2>
+		<tr>
+			<td>Id:</td>
+			<td>Nome:</td>
+			<td>Criado em:</td>
+			<td>Modificado em:</td>
+		</tr>
+			<?php $functionsBudgets->listarOrcamentos($budgetsResult);?>
+		</table>
 	</body>
-	<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
-	
+
+	<?php $pageMaker->printFooter();?>
+
 </html>

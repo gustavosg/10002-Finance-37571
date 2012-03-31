@@ -14,7 +14,7 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:        Categories.php
 * Descrição:   Entidade de mapeamento para Categories
-* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Autor:       37571 Gustavo Souza Gonçalves
 * Data:        21/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO

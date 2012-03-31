@@ -1,25 +1,46 @@
 <?php
-
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        resultCadastrar.php
+* Descrição:   Classe de resultado do cadastramento de dados de conta
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        27/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
 require_once "../../bootstrap.php";
 
+// Capturando valores da tela anterior
 $nomeConta = $_POST['nomeConta'];
 
+// Instanciando classes
+$functionsAccounts = new FunctionsAccounts();
 $conta = new Accounts();
+
+// Definindo valores
 $conta->setName($nomeConta);
 $conta->setCreated(date("Y-m-d H:i:s"));
 
+// Funções do Doctrine
 $entityManager->persist($conta);
 $entityManager->flush();
 
-$postRepo = $entityManager->getRepository("Accounts");
-$posts = $postRepo->findAll();
+// TODO Gustavo: Conferir a construção do relatório da conta cadastrada
 
-function exibirRegistro($post){
-	foreach ($post as $conta)
-	{
-		echo $conta->ToString();
-	}
-}
+$accountRepo= $entityManager->getRepository("Accounts");
+$accountsResult= $accountRepo->findAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +55,7 @@ function exibirRegistro($post){
 	<form action="" name="form" method="post">
 		<h1 align="center">Conta Cadastrada:</h1>
 		
-<?php exibirRegistro($posts);?>
+<?php $functionsAccounts->exibirRegistro($accountsResult);?>
 
 	</form>
 </body>

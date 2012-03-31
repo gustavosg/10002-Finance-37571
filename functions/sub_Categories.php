@@ -14,7 +14,7 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:        SubCategories.php
 * Descrição:   Funções para SubCategories
-* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Autor:       37571 Gustavo Souza Gonçalves
 * Data:        25/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO

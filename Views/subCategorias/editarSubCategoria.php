@@ -22,27 +22,37 @@
 
 require_once '../../bootstrap.php';
 
-// Declaração de classes
-$pageMaker = new PageMaker();
-$categoria = new Categories();
-$functionsCategories = new FunctionsCategories();
-$functionsSub_Categories = new FunctionsSub_Categories();
 
+// Capturando informações da tela anterior
 $nomeSubCategorias = $_POST['nomeSubCategorias'];
 
+// Declaração de classes
+$categoria = new Categories();
+
+$functionsCategories = new FunctionsCategories();
+$functionsSub_Categories = new FunctionsSub_Categories();
+$pageMaker = new PageMaker();
+
+// Declaração de variáveis
+$id = 0;
+$nome = '';
+$criacao = '';
+$modificacaoAnterior = '';
+
+
+// Funções do Doctrine
 $categoriesRepo = $entityManager->getRepository("Categories");
 $categoriesResult = $categoriesRepo->findAll();
+
+foreach ($categoriesResult as $categories)
+	$categoria = $categories;
 
 $subCategoria = new Sub_Categories($categoria, $nomeSubCategorias);
 
 $subCategorieRepo = $entityManager->getRepository("Sub_Categories");
 $subCategoriesResult = $subCategorieRepo->findBy(array('name' => $subCategoria->getName()));
 
-$id = 0;
-$nome = '';
-$criacao = '';
-$modificacaoAnterior = '';
-
+// Capturando informações complementares
 foreach ($subCategoriesResult as $subCategorie)
 {
 	$id = $subCategorie->getId();
@@ -93,12 +103,16 @@ foreach ($subCategoriesResult as $subCategorie)
 			
 			<table border=2 width=600px>
 			<tr>
-			<td width="160px">Categoria: </td>
-			<td><select  >
+			<td width="160px"  style="color:red; ">Categoria: </td>
+			<td><select name="idCategoria" >
 				<option />
 				<?php 
 				foreach($categoriesResult as $categorie) {
-					echo "<option >".$categorie->getName()."</option>";
+					// Compara se a Categoria pertence à sub Categoria, se sim, seleciona o registro correspondente.
+					if ($categorie->getId() == $subCategoria->getCategory()->getId())
+						echo "<option SELECTED value=".$categorie->getId().">".$categorie->getName()."</option>";
+					else 
+						echo "<option >".$categorie->getName()."</option>";
 				};
 				?>
 				</select></td>
@@ -108,14 +122,16 @@ foreach ($subCategoriesResult as $subCategorie)
 							
 			</p>
 			
-			<p align="right">
-			<label style="color:red ">Aviso! <br> Somente campos em vermelho podem ser editados.</label>
-			</p>
+			
 	
 	<p align="center">
 	<button type="submit"> Enviar</button>
 	</p>
 	
+	<p align="right">
+			<label style="color:red ">Aviso! <br> Somente campos em vermelho podem ser editados.</label>
+			</p>
+			
 	</form>
 	</body>
 	

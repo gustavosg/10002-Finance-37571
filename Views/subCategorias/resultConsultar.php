@@ -32,23 +32,12 @@ $functionsSub_Categories = new FunctionsSub_Categories();
 
 <body>
 	<form action="" name="form" method="post">
-		<button onclick="history.back()" >Voltar</button>
-
 		<h1 align="center">Informações da Sub-Categoria Cadastrada:</h1>
-
-<?php 
-
-$functionsSub_Categories->exibirSubCategorias($subCategories);
-
-foreach ($categories as $categorie)
-	echo $categorie->__toString();
-?>
-
+			<?php $functionsSub_Categories->exibirSubCategorias($subCategories); ?>
 	</form>
 </body>
 <?php 
 //Imprime o Footer da página
 $pageMaker->printFooter();
-
 ?>
 </html>

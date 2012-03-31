@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------------------------------------------------
-* DADOS DO SISTEMA
+ * DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:		Finance-37571
 * Área:		Finanças
@@ -20,4 +20,36 @@
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
 
+class FunctionsBudgets{
+
+	/**
+	 * Exibe dados de orçamento
+	 * @param Object List entity type $budgets
+	 */
+	function exibirRegistro($budgetsResult){
+		foreach ($budgetsResult as $budget){
+			echo "Informações do orcamento: <br />";
+			echo "Id do orcamento: ".$budget->getId(). "<br />";
+			echo "Nome : ". $budget->getName(). "<br />";
+			echo "Criado em: ". $budget->getCreated() . "<br />";
+			echo "Modificado em: ". $budget->getModified(). "<br />";
+		}
+	}
+
+	/**
+	 * Retorna todas as contas registradas, em formato table.
+	 * @param Object List entity type $budgets
+	 */
+	function listarOrcamentos($budgetsResult){
+		foreach ($budgetsResult as $budget){
+			echo "<tr>";
+			echo "<td>".$budget->getId()."</td>";
+			echo "<td>". $budget->getName(). "</td>";
+			echo "<td>". $budget->getCreated() . "</td>";
+			echo "<td>". $budget->getModified(). "</td>";
+			echo "</tr>";
+		}
+	}
+
+}
 ?>

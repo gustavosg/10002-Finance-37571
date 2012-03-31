@@ -37,7 +37,7 @@ class Sub_Categories {
 	/** @Column **/
 	protected $modified;
 
-	/** @ManyToOne(targetEntity="categories", cascade="merge") **/
+	/** @ManyToOne(targetEntity="categories", cascade="all") **/
 	protected $category;
 
 	// TODO Gustavo: fazer constructor.
