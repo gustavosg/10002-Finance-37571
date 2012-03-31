@@ -21,14 +21,10 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
-//TODO Gustavo: parei nesta edição!
-
-$categoria = new Categories();
-
+// Informações da tela anterior
 $idSubCategoria = $_POST['idSubCategoria'];
-
+$idCategoria = $_POST['idCategoria'];
 $nomeSubCategoria = $_POST['nomeSubCategoria'];
-
 $subCategoriaCriada = $_POST['dataCriada'];
 $subCategoriaModificada = $_POST['dataModificada'];
 
@@ -36,15 +32,20 @@ $subCategoriaModificada = $_POST['dataModificada'];
 if (!isset($subCategoriaModificada))
 	$subCategoriaModificada = date("Y/m/d H:i:s");
 
-$subCategoria = new Sub_Categories($categoria, $nomeSubCategoria);
+$categoria = new Categories();
 
-echo $subCategoria;
+$subCategoria = new Sub_Categories(null , $nomeSubCategoria);
 
+
+
+$subCategoria->setId($idSubCategoria);
 $subCategoria->setName($nomeSubCategoria);
 $subCategoria->setCreated($subCategoriaCriada);
 $subCategoria->setModified($subCategoriaModificada);
 
-$entityManager->merge($subCategoria);
+print_r($subCategoria);
+
+$entityManager->merge($categoria);
 $entityManager->flush();
 
 ?>

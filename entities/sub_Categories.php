@@ -41,7 +41,7 @@ class Sub_Categories {
 	protected $category;
 
 	// TODO Gustavo: fazer constructor.
-	public function __construct(Categories $categories,  $name = null){
+	public function __construct(Categories $categories = null,  $name = null){
 		$this->category = $categories;
 		$this->name = $name;
 	}
@@ -72,6 +72,10 @@ class Sub_Categories {
 	}
 	public function setModified($modified){
 		$this->modified= $modified;
+	}
+	
+	public function getCategory(){
+		return $this->category;
 	}
 
 	public function __toString(){

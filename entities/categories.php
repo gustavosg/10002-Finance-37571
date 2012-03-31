@@ -75,6 +75,10 @@ class Categories {
 	public function setModified($modified){
 		$this->modified= $modified;
 	}
+	
+	public function getSubCategory(){
+		return $this->subCategory;
+	}
 
 	public function __toString(){
 		return "Informações da Categoria: <br /> ID: [".($this->id==null?"-":$this->id)."], Nome: " . $this->name . " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . " . " ;

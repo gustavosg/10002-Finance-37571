@@ -22,10 +22,16 @@
 
 require_once '../../bootstrap.php';
 
+// Declaração de classes
 $pageMaker = new PageMaker();
 $categoria = new Categories();
+$functionsCategories = new FunctionsCategories();
+$functionsSub_Categories = new FunctionsSub_Categories();
 
 $nomeSubCategorias = $_POST['nomeSubCategorias'];
+
+$categoriesRepo = $entityManager->getRepository("Categories");
+$categoriesResult = $categoriesRepo->findAll();
 
 $subCategoria = new Sub_Categories($categoria, $nomeSubCategorias);
 
@@ -43,6 +49,7 @@ foreach ($subCategoriesResult as $subCategorie)
 	$nome = $subCategorie->getName();
 	$criacao = $subCategorie->getCreated();
 	$modificacaoAnterior = $subCategorie->getModified();
+	$categoria = $subCategorie->getCategory();
 }
 
 ?>
@@ -54,8 +61,10 @@ foreach ($subCategoriesResult as $subCategorie)
 	<body>
 	<form action="resultEditarSubCategoria.php" method="post" name="form">
 		<h1 align="center">Edição de SubCategorias:</h1>
+		
+		<h2 align="center">Dados da Sub-Categoria</h2>
 		<p align="center" />
-			<table >
+			<table border=2 width=600px >
 				<tr>
 					<td><label>ID:</label></td>
 					<td><input type="text" size="10px" name="idSubCategoria" readonly="readonly" value="<?php echo $id ?>" /></td>
@@ -77,6 +86,27 @@ foreach ($subCategoriesResult as $subCategorie)
 				</tr>
 				
 			</table>
+		
+		<h2 align="center">Dados da Categoria relacionada</h2>
+			
+			<p align="center">
+			
+			<table border=2 width=600px>
+			<tr>
+			<td width="160px">Categoria: </td>
+			<td><select  >
+				<option />
+				<?php 
+				foreach($categoriesResult as $categorie) {
+					echo "<option >".$categorie->getName()."</option>";
+				};
+				?>
+				</select></td>
+			</tr>
+			</table>
+			
+							
+			</p>
 			
 			<p align="right">
 			<label style="color:red ">Aviso! <br> Somente campos em vermelho podem ser editados.</label>
@@ -88,6 +118,7 @@ foreach ($subCategoriesResult as $subCategorie)
 	
 	</form>
 	</body>
+	
 	<?php $pageMaker->printFooter();?>
 
 </html>
