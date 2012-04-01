@@ -65,6 +65,7 @@ $subCategoria->setCreated(date("Y/m/d H:i:s"));
 	</head>
 
 	<body>
+	<a href="../">Voltar para menu principal</a>
 		<form action="" name="form" method="post">
 			<h1 align="left">SubCategoria Cadastrada!</h1>
 			

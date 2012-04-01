@@ -53,7 +53,7 @@ $budgetsResult = $budgetsRepo->findAll();
 					<td>Criado em:</td>
 					<td>Modificado em:</td>
 				</tr>
-					<?php $functionsBudgets->listarOrcamentos($budgetsResult); ?>
+					<?php $functionsBudgets->listarOrcamentosTable($budgetsResult); ?>
 					
 			</table>
 	

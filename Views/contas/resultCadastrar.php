@@ -52,6 +52,7 @@ $accountsResult= $accountRepo->findAll();
 </head>
 
 <body>
+<a href="../">Voltar para menu principal</a>
 	<form action="" name="form" method="post">
 		<h1 align="center">Conta Cadastrada:</h1>
 		

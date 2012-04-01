@@ -32,9 +32,7 @@ class Budget_Records{
 
 	/** @ManyToOne(targetEntity="Sub_Categories", cascade="all")
 	 * * @JoinColumn(name="sub_category_id", referencedColumnName="id") 
-	 * 
-	 * Enter description here ...
-	 * @var unknown_type **/
+	**/
 	protected $subCategory;
 
 	/** @Column(type="decimal") **/
@@ -47,9 +45,8 @@ class Budget_Records{
 	protected $modified;
 
 	// Constructor
-
 	public function  __construct(Budgets $budget = null, Sub_Categories $subCategory = null){
-		$this->budget= $budget;
+		$this->budget = $budget;
 		$this->subCategory = $subCategory;
 	}
 
@@ -98,7 +95,9 @@ class Budget_Records{
 
 	public function __toString(){
 		return "Informações do Item: <br /> ID: [".($this->id==null?"-":$this->id)."], Quantia: ". $this->ammount. " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . "
+		<br />
 		 Orçamento: " . $this->budget. ",
+		 <br />
 		 SubCategoria: " . $this->subCategory . "	. " ;
 	}
 }

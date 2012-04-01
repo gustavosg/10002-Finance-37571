@@ -23,7 +23,6 @@
 /** @Entity **/
 class Sub_Categories {
 
-	// TODO Gustavo: Este mapeamento me deixou bem confuso, como será feito?
 	/** @Id @GeneratedValue @Column(type="integer")	**/
 	protected $id;
 
@@ -36,10 +35,11 @@ class Sub_Categories {
 	/** @Column **/
 	protected $modified;
 
-	/** @ManyToOne(targetEntity="categories", cascade="all") **/
+	/** @ManyToOne(targetEntity="Categories", cascade="all") 
+	* @JoinColumn(name="category_id", referencedColumnName="id")
+	* **/
 	protected $category;
 
-	// TODO Gustavo: fazer constructor.
 	public function __construct(Categories $categories = null,  $name = null){
 		$this->category = $categories;
 		$this->name = $name;
@@ -75,9 +75,6 @@ class Sub_Categories {
 	
 	public function getCategory(){
 		return $this->category;
-	}
-	public function setCategory(Category $category){
-		$this->category = $category;
 	}
 
 	public function __toString(){

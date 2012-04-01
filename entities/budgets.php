@@ -23,7 +23,7 @@
 
 class Budgets{
 	
-	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity="BudgetRecords") @var integer **/
+	/** @Id @GeneratedValue @Column(type="integer") @OneToMany(targetEntity="Budget_Records") @var integer **/
 	protected $id;
 	
 	/** @Column(type="string") **/
@@ -35,7 +35,6 @@ class Budgets{
 	/** @Column **/
 	protected $modified;
 	
-	// TODO Gustavo: Continuar construtor de Budgets
 	public function  __construct($id = null,$name = null){
 		$this->id = $id;
 		$this->name = $name;

@@ -29,11 +29,11 @@ class Expenditure{
 	/** @Id @GeneratedValue @Column(type="integer") */
 	protected $id;
 
-	/** @ManyToOne(targetEntity="subCategories") */
+	/** @ManyToOne(targetEntity="sub_Categories", cascade="merge") */
 	protected $subCategory;
 
 	/** @ManyToOne(targetEntity="Accounts", inversedBy="expenditure") */
-	protected $accountId;
+	protected $account;
 
 	/** @Column **/
 	protected  $date;
@@ -65,12 +65,6 @@ class Expenditure{
 		$this->id = $id;
 	}
 
-	public function getAccountId(){
-		return $this->accountId;
-	}
-	public function setAccountId($accountId){
-		$this->accountId = $accountId;
-	}
 
 	public function getDate(){
 		return $this->date;

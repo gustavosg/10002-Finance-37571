@@ -23,10 +23,20 @@
 require_once "../../bootstrap.php";
 
 // Definição de variáveis
+
+// Para orçamento:
 $nomeOrcamento = '';
+$dataCriacaoOrcamento = '';
+$dataModificacaoOrcamento = '';
+
+// Para SubCategoria
 $nomeSubCategoria = '';
-$dataCriacao = '';
-$dataModificacao = '';
+$dataCriacaoSubCategoria = '';
+$dataModificacaoSubCategoria = '';
+
+
+$categoria = new Categories();
+
 
 // Capturando informações da tela anterior
 $idSubCategoria = $_POST['idSubCategoria'];
@@ -45,53 +55,62 @@ foreach ($budgetsResult as $result)
 
 foreach ($subCategoriesResult as $result){
 	$nomeSubCategoria = $result->getName();
-	$dataCriacao = $result->getCreated();
-	$dataModificacao = $result->getModified();
+	$dataCriacaoSubCategoria = $result->getCreated();
+	$dataModificacaoSubCategoria = $result->getModified();
+	$categoria= $result->getCategory();
 }
 
-// Instancia de classes
-
+// Instancia de classes e definição de valores
 $orcamento = new Budgets($idOrcamento, $nomeOrcamento);
-$subCategoria = new Sub_Categories(null, $nomeSubCategoria);
+
+$budgetsRepo = $entityManager->getRepository("Budgets");
+$budgetsResult = $budgetsRepo->findBy(array('id' => $idOrcamento));
+
+foreach ($budgetsResult as $result){
+	$dataCriacaoOrcamento = $result->getCreated();
+	$dataModificacaoOrcamento = $result->getModified();
+}
+
+$orcamento->setCreated($dataCriacaoOrcamento);
+$orcamento->setModified($dataModificacaoOrcamento);
+
+$subCategoria = new Sub_Categories($categoria, $nomeSubCategoria);
 $pageMaker  = new PageMaker();
 
 $subCategoria->setId($idSubCategoria);
 $subCategoria->setName($nomeSubCategoria);
-$subCategoria->setCreated($dataCriacao);
-$subCategoria->setModified($dataModificacao);
+$subCategoria->setCreated($dataCriacaoSubCategoria);
+$subCategoria->setModified($dataModificacaoSubCategoria);
 
 $itemOrcamento = new Budget_Records($orcamento, $subCategoria);
-
-// Definição de valores
 
 $itemOrcamento->setAmmount($quantia);
 $itemOrcamento->setBudget($orcamento);
 $itemOrcamento->setSubCategory($subCategoria);
 $itemOrcamento->setCreated(date("Y/m/d H:i:s"));
 
-echo $itemOrcamento;
-
-$entityManager->merge($itemOrcamento);
-$entityManager->flush();
-
 ?>
-
-<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" src="../scripts/functions.js"></script>
-<meta charset="ISO-8859-1">
-<title>Finance-37571: Cadastramento de Conta:</title>
-</head>
+	<head>
+		<script type="text/javascript" src="../scripts/functions.js"></script>
+		<meta charset="ISO-8859-1">
+		<title>Finance-37571: Cadastramento de Conta:</title>
+	</head>
 
-<body>
-	<form action="" name="form" method="post">
-		<h1 align="center">Conta Cadastrada:</h1>
-		
-<?php 
-// exibirRegistro($posts);
-?>
-
-	</form>
-</body>
-<?php $pageMaker->printFooter();?></html>
+	<body>
+	
+	<a href="../">Voltar para menu principal</a>
+		<form action="" name="form" method="post">
+			<h1 align="center">Conta Cadastrada:</h1>
+			
+			<?php 
+				echo $itemOrcamento;
+				
+				$entityManager->persist($itemOrcamento);
+				$entityManager->flush();
+			?>
+	
+		</form>
+	</body>
+	<?php $pageMaker->printFooter();?>
+</html>
