@@ -12,23 +12,33 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        Categories.php
-* Descrição:   Entidade de mapeamento para Categories
-* Autor:       37571 Gustavo Souza Gonçalves
-* Data:        21/03/2012
+* Nome:        BudgetRecords.php
+* Descrição:   Entidade de mapeamento para BudgetRecords
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        22/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-
 /** @Entity **/
-class Categories {
+
+class Budget_Records{
 
 	// Fields
 	/** @Id @GeneratedValue @Column(type="integer") **/
 	protected $id;
 
-	/** @Column(type="string") **/
-	protected $name;
+	/** @ManyToOne(targetEntity="Budgets", cascade="all") **/
+	protected $budget;
+
+	/** @ManyToOne(targetEntity="Sub_Categories", cascade="all")
+	 * * @JoinColumn(name="sub_category_id", referencedColumnName="id") 
+	 * 
+	 * Enter description here ...
+	 * @var unknown_type **/
+	protected $subCategory;
+
+	/** @Column(type="decimal") **/
+	protected $ammount;
 
 	/** @Column **/
 	protected $created;
@@ -36,28 +46,40 @@ class Categories {
 	/** @Column **/
 	protected $modified;
 
-	/** @OneToMany(targetEntity="Sub_Categories", mappedBy="category") */
-	protected  $subCategory;
-	
-	// Construtor:
-	public function  __construct($id = null, $name = null){
-		$this->id = $id;
-		$this->name=$name;		
+	// Constructor
+
+	public function  __construct(Budgets $budget = null, Sub_Categories $subCategory = null){
+		$this->budget= $budget;
+		$this->subCategory = $subCategory;
 	}
-	
-	// Modificadores de acesso:
+
+	// Modificadores de acesso
 	public function getId(){
 		return $this->id;
 	}
 	public function setId($id){
-		$this->id= $id;
+		$this->id = $id;
 	}
 
-	public function getName(){
-		return $this->name;
+	public function getBudget(){
+		return $this->budget;
 	}
-	public function setName($name){
-		$this->name = $name;
+	public function setBudget(Budgets $budget){
+		$this->budget = $budget;
+	}
+
+	public function getSubCategory(){
+		return $this->subCategory;
+	}
+	public function setSubCategory(Sub_Categories $subCategory){
+		$this->subCategory= $subCategory;
+	}
+
+	public function getAmmount(){
+		return $this->ammount;
+	}
+	public function setAmmount($ammount){
+		$this->ammount = $ammount;
 	}
 
 	public function getCreated(){
@@ -73,18 +95,12 @@ class Categories {
 	public function setModified($modified){
 		$this->modified= $modified;
 	}
-	
-	public function getSubCategory(){
-		return $this->subCategory;
-	}
-	
-	public function setSubCategory(Sub_Categories $subCategory){
-		$this->subCategory = $subCategory;
-	}
 
 	public function __toString(){
-		return "Informações da Categoria: <br /> ID: [".($this->id==null?"-":$this->id)."], Nome: " . $this->name . " , 
-		Criado em: ". $this->created . " , Modificado em: ". $this->modified . " . " ;
+		return "Informações do Item: <br /> ID: [".($this->id==null?"-":$this->id)."], Quantia: ". $this->ammount. " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . "
+		 Orçamento: " . $this->budget. ",
+		 SubCategoria: " . $this->subCategory . "	. " ;
 	}
 }
+
 ?>

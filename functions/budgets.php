@@ -27,7 +27,7 @@ class FunctionsBudgets{
 	*/
 	function listarOrcamentosSelect($budgetsResult){
 		foreach($budgetsResult as $budget) {
-			echo "<option >".$budget->getName()."</option>";
+			echo "<option value=".$budget->getId()." >".$budget->getName()."</option>";
 		}
 	}
 	

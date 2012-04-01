@@ -69,7 +69,7 @@ $subCategoria->setCreated(date("Y/m/d H:i:s"));
 			<h1 align="left">SubCategoria Cadastrada!</h1>
 			
 			<?php 
-			$subCategoria->__toString();
+			echo $subCategoria->__toString();
 
 			$entityManager->merge($subCategoria);
 			$entityManager->flush();

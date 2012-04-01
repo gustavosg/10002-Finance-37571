@@ -33,12 +33,6 @@ class Accounts{
 	/** @Column **/
 	protected $modified;
 
-	// 	// TODO Gustavo: Dúvidas neste mapeamento, será assim mesmo?
-	// 	/**
-	// 	* @OneToMany(targetEntity="Expenditure", inversedBy="accountId")
-	// 	**/
-	// 	protected $expenditure;
-
 	public function __construct($id = null, $name = null ){
 		$this->id = $id;
 		$this->name = $name;

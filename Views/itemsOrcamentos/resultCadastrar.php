@@ -13,7 +13,7 @@
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:        resultCadastrar.php
-* Descrição:   Insere informações para Categories
+* Descrição:   Insere informações para BudgetRecords
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
 * Data:        25/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
@@ -21,6 +21,12 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 
 require_once "../../bootstrap.php";
+
+// Definição de variáveis
+$nomeOrcamento = '';
+$nomeSubCategoria = '';
+$dataCriacao = '';
+$dataModificacao = '';
 
 // Capturando informações da tela anterior
 $idSubCategoria = $_POST['idSubCategoria'];
@@ -34,27 +40,40 @@ $budgetsResult = $budgetsRepo->findBy(array ('id' => $idOrcamento));
 $subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
 $subCategoriesResult = $subCategoriesRepo->findBy(array('id'=> $idSubCategoria));
 
+foreach ($budgetsResult as $result)
+	$nomeOrcamento = $result->getName();
+
+foreach ($subCategoriesResult as $result){
+	$nomeSubCategoria = $result->getName();
+	$dataCriacao = $result->getCreated();
+	$dataModificacao = $result->getModified();
+}
+
 // Instancia de classes
-$itemOrcamento = new BudgetRecords();
+
+$orcamento = new Budgets($idOrcamento, $nomeOrcamento);
+$subCategoria = new Sub_Categories(null, $nomeSubCategoria);
 $pageMaker  = new PageMaker();
+
+$subCategoria->setId($idSubCategoria);
+$subCategoria->setName($nomeSubCategoria);
+$subCategoria->setCreated($dataCriacao);
+$subCategoria->setModified($dataModificacao);
+
+$itemOrcamento = new Budget_Records($orcamento, $subCategoria);
 
 // Definição de valores
 
-$itemOrcamento->setName($nomeItemOrcamento);
-$conta->setCreated(date("Y-m-d H:i:s"));
+$itemOrcamento->setAmmount($quantia);
+$itemOrcamento->setBudget($orcamento);
+$itemOrcamento->setSubCategory($subCategoria);
+$itemOrcamento->setCreated(date("Y/m/d H:i:s"));
 
-$entityManager->persist($conta);
+echo $itemOrcamento;
+
+$entityManager->merge($itemOrcamento);
 $entityManager->flush();
 
-$postRepo = $entityManager->getRepository("Accounts");
-$posts = $postRepo->findAll();
-
-function exibirRegistro($post){
-	foreach ($post as $conta)
-	{
-		echo $conta->ToString();
-	}
-}
 ?>
 
 <!DOCTYPE html>
@@ -69,12 +88,10 @@ function exibirRegistro($post){
 	<form action="" name="form" method="post">
 		<h1 align="center">Conta Cadastrada:</h1>
 		
-<?php exibirRegistro($posts);?>
+<?php 
+// exibirRegistro($posts);
+?>
 
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
-</html>
+<?php $pageMaker->printFooter();?></html>

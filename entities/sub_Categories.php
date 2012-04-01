@@ -24,8 +24,7 @@
 class Sub_Categories {
 
 	// TODO Gustavo: Este mapeamento me deixou bem confuso, como será feito?
-	/** @Id @GeneratedValue @Column(type="integer")
-	* @var IntegerType:: **/
+	/** @Id @GeneratedValue @Column(type="integer")	**/
 	protected $id;
 
 	/** @Column(type="string") **/
@@ -76,6 +75,9 @@ class Sub_Categories {
 	
 	public function getCategory(){
 		return $this->category;
+	}
+	public function setCategory(Category $category){
+		$this->category = $category;
 	}
 
 	public function __toString(){
