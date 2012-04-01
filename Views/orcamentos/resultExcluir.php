@@ -1,5 +1,4 @@
 <?php
-
 /*------------------------------------------------------------------------------------------------------------------------
 * DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
@@ -23,36 +22,61 @@
 
 require_once '../../bootstrap.php';
 
+// Declaração de variáveis
+$idOrcamento = 0;
+$nomeOrcamento ;
+$dataCriacao ;
+$dataModificacao; 
+
+// Capturando informações da tela anterior
 $nomeOrcamento = $_POST['nomeOrcamento'];
 
-$orcamento = new Budgets($nomeOrcamento);
-
-$budgetsRepo = $entityManager->getRepository("Budgets");
-$budgets = $budgetsRepo->findBy(array ('name' => $orcamento->getName()));
+// Instanciando as Classes
+$orcamento = new Budgets(null, $nomeOrcamento);
+$pageMaker = new PageMaker();
 
 ?>
 
 <html>
-<head>
-<title>Excluir categoria</title>
-</head>
-<body>
-
-	<form action="">
-
-		<button onclick="history.back()">Voltar</button>
-		<h1>Orcamento excluído:</h1>
-
-<?php 
-
-// TODO Perguntar ao Ítalo porque não remove, sendo que a explicação do site é a mesma:
-// http://docs.doctrine-project.org/projects/doctrine-orm/en/2.0.x/reference/working-with-objects.html
-
-$entityManager->remove($budgets);
-$entityManager->flush();
-
-?>
-	</form>
-
-</body>
+	<head>
+		<title>Excluir categoria</title>
+	</head>
+	<body>
+	
+		<form action="">
+			
+			<?php 
+			
+			// Funções do Doctrine e exclusão do registro
+			$budgetsRepo = $entityManager->getRepository("Budgets");
+			$budgetsResult = $budgetsRepo->findBy(array ('name' => $orcamento->getName()));
+			
+			foreach ($budgetsResult as $budgets)
+			{
+				$idOrcamento = $budgets->getId();
+				$nomeOrcamento = $budgets->getName();
+				$dataCriacao = $budgets->getCreated();
+				$dataModificacao = $budgets->getModified();
+			}
+				
+			$orcamento->setId($idOrcamento);
+			$orcamento->setName($nomeOrcamento);
+			$orcamento->setCreated($dataCriacao);
+			$orcamento->setModified($dataModificacao);
+			
+			$budgetsResult = $budgetsRepo->find($idOrcamento);
+			
+			$entityManager->remove($budgetsResult);
+			$entityManager->flush();
+			
+			?>
+			<h1>Orcamento excluído:</h1>
+			<?php 
+			
+			echo $orcamento;
+			?>
+		</form>
+	
+	</body>
+	<?php $pageMaker->printFooter();?>
 </html>

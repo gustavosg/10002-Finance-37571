@@ -1,5 +1,4 @@
 <?php
-
 /*------------------------------------------------------------------------------------------------------------------------
  * DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
@@ -40,8 +39,6 @@ class Accounts{
 	// 	**/
 	// 	protected $expenditure;
 
-	// TODO Gustavo: conferir se terá construtor de Accounts
-
 	public function __construct($id = null, $name = null ){
 		$this->id = $id;
 		$this->name = $name;
@@ -75,10 +72,8 @@ class Accounts{
 		$this->modified = $modified;
 	}
 
-	public function ToString(){
-		return "[".($this->id==null?"-":$this->id)."] " . $this->name. " , ".  $this->created == null? "-" : $this->created ." , ". $this->modified == null? "-":$this->modified . " . " ;
+	public function __toString(){
+		return "ID: [".($this->id==null?"-":$this->id)."] , Nome:" . ($this->name). " , Criado em: ". ( $this->created == null? "-" : $this->created )." , Modificado em: ". ($this->modified == null? "-":$this->modified ). " . " ;
 	}
-
 }
-
 ?>

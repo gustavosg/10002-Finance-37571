@@ -1,3 +1,36 @@
+<?php 
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        excluir.php
+* Descrição:   Exclui informações de Orçamentos
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        21/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
+require_once '../../bootstrap.php';
+
+// Instanciando classes
+$functionsBudgets = new FunctionsBudgets();
+$pageMaker = new PageMaker();
+
+// Funções do Doctrine
+$budgetsRepo = $entityManager->getRepository("Budgets");
+$budgetsResult = $budgetsRepo->findAll();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +44,13 @@
 	<h1 align="center">Orçamentos à Excluir:</h1>
 	<br>
 	<p align="center">
-		<label align="center">Orçamentos:</label> <input type="text" size="100"
-			maxlength="50" name="nomeOrcamento" id="nomeOrcamento" />
+		<label align="center">Orçamento:</label> 
+			<select name="nomeOrcamento">
+				<option />
+
+			<?php $functionsBudgets->listarOrcamentosSelect($budgetsResult);?>
+			</select>
+		
 	</p>
 	<br>
 	<p align="center">
@@ -25,8 +63,5 @@
 	</p>
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php $pageMaker->printFooter();?>
 </html>

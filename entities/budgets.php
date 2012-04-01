@@ -35,11 +35,10 @@ class Budgets{
 	/** @Column **/
 	protected $modified;
 	
-	
 	// TODO Gustavo: Continuar construtor de Budgets
-	public function  __construct($name = null){
+	public function  __construct($id = null,$name = null){
+		$this->id = $id;
 		$this->name = $name;
-		
 	}
 	
 	public function getId(){
@@ -70,8 +69,8 @@ class Budgets{
 		$this->modified= $modified;
 	}
 	
-	public function ToString(){
-		return "ID: [".($this->id==null?"-":$this->id)."], Nome: " . $this->name . " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . " . " ;
+	public function __toString(){
+		return "ID: [".($this->id==null?"-":$this->id)."], Nome: " . ($this->name ). " , Criado em: ". ($this->created ). " , Modificado em: ". ($this->modified ). " . " ;
 	}
 	
 }

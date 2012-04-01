@@ -7,11 +7,7 @@ $categorias = new Categories();
 $categoryRepo = $entityManager->getRepository("Categories");
 $infoCategory = $categoryRepo->findAll();
 
-function listarCategorias($infoCategory){
-	foreach($infoCategory as $categories) {
-		echo "<option value='".$categories->getId()."' >".$categories->getName()."</option>";
-	}
-}
+$functionsCategories = new FunctionsCategories();
 
 ?>
 
@@ -28,12 +24,12 @@ function listarCategorias($infoCategory){
 		<h1 align="center">Entre com as informações:</h1>
 		<br>
 		<p align="center">
-		<table align="center">
+		<table align="center" border=2>
 			<tr>
 				<td><label>Selecione uma categoria: </label></td>
 				<td><select name="idCategoria">
 						<option />
-						<?php listarCategorias($infoCategory)?>
+						<?php $functionsCategories->listarCategorias($infoCategory)?>
 					</select>
 				</td>
 			</tr>

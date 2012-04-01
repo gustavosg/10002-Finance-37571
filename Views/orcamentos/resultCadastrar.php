@@ -1,25 +1,45 @@
 <?php
-
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        resultCadastrar.php
+* Descrição:   Classe de resultado do cadastramento de dados de orcamentos
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        21/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
 require_once "../../bootstrap.php";
 
+// Capturando informações da tela anterior
 $nomeOrcamento = $_POST['nomeOrcamento'];
 
+// Instanciando classes
 $orcamento = new Budgets();
+$functionsBudgets = new FunctionsBudgets();
+$pageMaker = new PageMaker();
+
+// Definição de valores
 $orcamento->setName($nomeOrcamento);
 $orcamento->setCreated(date("Y-m-d H:i:s"));
 
+// Funções do Doctrine
 $entityManager->persist($orcamento);
 $entityManager->flush();
 
 $budgetsRepo = $entityManager->getRepository("Budgets");
-$posts = $budgetsRepo->findAll();
+$budgetsResult = $budgetsRepo->findAll();
 
-function exibirRegistro($post){
-	foreach ($post as $orcamento)
-	{
-		echo $orcamento->ToString();
-	}
-}
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +51,19 @@ function exibirRegistro($post){
 </head>
 
 <body>
-	<form action="" name="form" method="post">
-		<h1 align="center">Orcamento Cadastrada:</h1>
+<a href="../">Voltar para menu principal</a>
+		<h1 align="center">Orçamento Cadastrado:</h1>
+		<p align="center">
 		
-<?php exibirRegistro($posts);?>
-
-	</form>
+			<table border=2 align="center">
+				<td>ID:</td>
+				<td>Nome:</td>
+				<td>Criado em:</td>
+				<td>Modificado em:</td>
+	
+					<?php $functionsBudgets->listarOrcamentosTable($budgetsResult);?>
+			</table>
+		</p>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php $pageMaker->printFooter();?>
 </html>

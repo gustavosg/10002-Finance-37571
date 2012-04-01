@@ -24,15 +24,14 @@
 class BudgetRecords{
 
 	// Fields
-
 	/** @Id @GeneratedValue @Column(type="integer") **/
 	protected $id;
 
-	/** @ManyToOne(targetEntity="Budgets") referencedBy="id" **/
-	protected $budgetId;
+	/** @ManyToOne(targetEntity="Budgets", cascade="all") **/
+	protected $budget;
 
-	/** @ManyToOne(targetEntity="SubCategories") **/
-	protected $subCategoryId;
+	/** @ManyToOne(targetEntity="SubCategories", cascade="all") **/
+	protected $subCategory;
 
 	/** @Column(type="decimal") **/
 	protected $ammount;
@@ -42,16 +41,16 @@ class BudgetRecords{
 
 	/** @Column(type="datetime") **/
 	protected $modified;
-
+	
 	// Constructor
 
 	// TODO Gustavo: Continuar construtor de BudgetRecords
-	public function  __construct(Budgets $budgetId){
-		$this->budgetId = $budgetId;
+	public function  __construct(Budgets $budget = null, Sub_Categories $subCategory = null){
+		$this->budget= $budget;
+		$this->subCategory = $subCategory;
 	}
 
 	// Modificadores de acesso
-
 	public function getId(){
 		return $this->id;
 	}
@@ -59,13 +58,10 @@ class BudgetRecords{
 		$this->id = $id;
 	}
 
-	public function getBudgetId(){
-		return $this->budgetId;
+	public function getBudget(){
+		return $this->budget;
 	}
-	public function setBudgetId($budgetId){
-		$this->budgetId = $budgetId;
-	}
-
+	
 	public function getAmmount(){
 		return $this->ammount;
 	}

@@ -19,9 +19,18 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-
 class FunctionsBudgets{
 
+	/**
+	* Lista orçamentos em formato Select List Box
+	* @param entity $Budgets
+	*/
+	function listarOrcamentosSelect($budgetsResult){
+		foreach($budgetsResult as $budget) {
+			echo "<option >".$budget->getName()."</option>";
+		}
+	}
+	
 	/**
 	 * Exibe dados de orçamento
 	 * @param Object List entity type $budgets
@@ -33,6 +42,7 @@ class FunctionsBudgets{
 			echo "Nome : ". $budget->getName(). "<br />";
 			echo "Criado em: ". $budget->getCreated() . "<br />";
 			echo "Modificado em: ". $budget->getModified(). "<br />";
+			echo "<br>";
 		}
 	}
 
@@ -40,7 +50,7 @@ class FunctionsBudgets{
 	 * Retorna todas as contas registradas, em formato table.
 	 * @param Object List entity type $budgets
 	 */
-	function listarOrcamentos($budgetsResult){
+	function listarOrcamentosTable($budgetsResult){
 		foreach ($budgetsResult as $budget){
 			echo "<tr>";
 			echo "<td>".$budget->getId()."</td>";

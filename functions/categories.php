@@ -19,15 +19,40 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-
 class FunctionsCategories{
 
-	function listarCategorias($categoriesResult){
-		foreach($categoriesResult as $categorie) {
-			echo "<option >".$categorie->getName()."</option>";
+	/**
+	 * Lista Categorias em formato Select List Box
+	 * @param entity $Categories
+	 */
+	function listarCategorias($infoCategory){
+		foreach($infoCategory as $categories) {
+			echo "<option value='".$categories->getId()."' >".$categories->getName()."</option>";
 		}
 	}
 
-}
+	/**
+	 * Lista Categorias em formato Table
+	 * @param entity $Categories
+	 */
+	function listarTodasCategorias($categories){
+		foreach ($categories as $categorie){
+			echo "<tr>";
+			echo "<td>".$categorie->getId()."</td>";
+			echo "<td>". $categorie->getName(). "</td>";
+			echo "<td>". $categorie->getCreated() . "</td>";
+			echo "<td>". $categorie->getModified(). "</td>";
+			echo "</tr>";
+		}
+	}
 
+	/**
+	 * Imprime informações da categoria
+	 * @param entity $Categories
+	 */
+	function exibirRegistro($categoriesResult){
+		foreach ($categoriesResult as $categoria)
+		echo $categoria();
+	}
+}
 ?>

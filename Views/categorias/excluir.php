@@ -1,10 +1,33 @@
 <?php
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        excluir.php
+* Descrição:   Exclui informações de Categories
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        21/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
+// Instanciando classes
+$functionsCategories = new FunctionsCategories();
+$pageMaker = new PageMaker();
+
+// Funções do Doctrine
 $categoriesRepo = $entityManager->getRepository("Categories");
 $categoriesResult = $categoriesRepo->findAll();
-
-$functionsCategories = new FunctionsCategories(); 
 
 ?>
 
@@ -20,11 +43,12 @@ $functionsCategories = new FunctionsCategories();
 <form action="resultExcluir.php" name="form" method="post">
 	<h1 align="center">Categoria à Excluir:</h1>
 	<br>
+	<h2 align="center">Selecione a categoria desejada: </h2>
+	
 	<p align="center">
 		<label align="center">Categoria:</label> 
-			
-					<select name="nomeCategoria">
-		<option />
+			<select name="nomeCategoria">
+				<option />
 
 			<?php $functionsCategories->listarCategorias($categoriesResult);?>
 			</select>
@@ -41,8 +65,5 @@ $functionsCategories = new FunctionsCategories();
 	</p>
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php $pageMaker->printFooter();?>
 </html>
