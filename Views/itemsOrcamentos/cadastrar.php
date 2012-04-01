@@ -12,30 +12,30 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        resultCadastrar.php
-* Descrição:   Insere informações para Categories
+* Nome:        cadastrar.php
+* Descrição:   tela para inserir informações de categories
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
 * Data:        21/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-
-
 require_once '../../bootstrap.php';
 
 $itemsOrcamento = new BudgetRecords();
-$functionsCategories = new FunctionsCategories();
+$functionsBudgets = new FunctionsBudgets();
 $functionsSub_Categories = new FunctionsSub_Categories();
 $subCategoria = new Sub_Categories();
 
-$categoriesRepo = $entityManager->getRepository("Categories");
-$categoriesResult = $categoriesRepo->findAll();
+$subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
+$subCategoriesResult= $subCategoriesRepo->findAll();
+
+$budgetsRepo = $entityManager->getRepository("Budgets");
+$budgetsResult = $budgetsRepo->findAll();
 
 // TODO Gustavo: Parei no cadastro de Items de Orçamento
 
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
@@ -44,40 +44,36 @@ $categoriesResult = $categoriesRepo->findAll();
 </head>
 
 <body>
-<form action="" name="form" method="post">
+<form action="resultCadastrar.php" name="form" method="post">
 	<h1 align="center">Entre com as informações:</h1>
-	<br>
+	<h2 align="center">Orçamentos:</h2>
 	<p align="center">
-		<label align="center">Orçamentos:</label> 
-		
+		 
 		<table align="center" border=2>
 			<tr>
 				<td><label>Selecione uma sub categoria: </label></td>
-				<td><select name="idCategoria">
+				<td><select name="idSubCategoria">
 						<option />
 						<?php $functionsSub_Categories->listarSubCategorias($subCategoriesResult)?>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td><label>Nome da Sub-Categoria:</label></td>
-				<td><?php $functionsCategories->listarCategorias($categoriesResult)?></td>
+				<td><label>Selecione um Orçamento:</label></td>
+				<td>
+				<select name="idOrcamento">
+				<option />
+				
+				<?php $functionsBudgets->listarOrcamentosSelect($budgetsResult);?></td>
+				</select>
 			</tr>
 
 			<tr>
-				<td></td>
-				<td><input type="text" size="100"
-			maxlength="50" name="NomeItemOrcamento" id="NomeItemOrcamento" /></td>
+				<td><label>Quantia:</label></td>
+				<td><input type="text" size="100" maxlength="50" name="Quantia" /></td>
 			</tr>
-
-		
-
-
 		</table>
-		
-		
 	</p>
-	<br>
 	<p align="center">
 		<button type="submit" value="submit" name="Enviar"
 			>Enviar</button>
