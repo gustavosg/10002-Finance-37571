@@ -48,7 +48,7 @@ $budgetRecordsResult = $budgetRecordsRepo->findAll();
 		<tr>
 			<td><label align="center">Items de orçamentos:</label></td>
 			<td>
-			<select>
+			<select name="idItemOrcamento">
 				<option />
 			<?php
 			$functionsBudgetRecords->listarItemsOrcamentosSelect($budgetRecordsResult);

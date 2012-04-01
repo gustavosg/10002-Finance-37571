@@ -35,7 +35,7 @@ class Sub_Categories {
 	/** @Column **/
 	protected $modified;
 
-	/** @ManyToOne(targetEntity="Categories", cascade="all") 
+	/** @ManyToOne(targetEntity="Categories", cascade="merge") 
 	* @JoinColumn(name="category_id", referencedColumnName="id")
 	* **/
 	protected $category;
