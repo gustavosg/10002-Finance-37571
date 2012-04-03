@@ -40,8 +40,8 @@ $pageMaker = new PageMaker();
 		<title>Excluir categoria</title>
 	</head>
 	<body>
+		<a href="../">Voltar para menu principal</a>
 		<form action="">
-
 			<?php 
 			// Funções do Doctrine e exclusão do registro
 			$budgetRecordsRepo = $entityManager->getRepository("Budget_Records");
@@ -61,7 +61,6 @@ $pageMaker = new PageMaker();
 			
 			$budgetRecordsResult= $budgetRecordsRepo->find($idItemOrcamento);
 			
-			//print_r($budgetRecordsResult);
 			$entityManager->remove($budgetRecordsResult);
 			$entityManager->flush();
 			

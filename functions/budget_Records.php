@@ -30,5 +30,23 @@ class FunctionsBudget_Records{
 			echo "<option value=".$result->getId()." >Quantia: ".$result->getAmmount().", Relacionado à Orçamento: ".$result->getBudget()->getName() ."</option>";
 		}
 	}
+	
+	/**
+	* Lista items de orçamentos em formato Table Row
+	* @param entity $BudgetRecords
+	*/
+	function listarItemsOrcamentoTable($budgetRecordsResult){
+		foreach ($budgetRecordsResult as $result)
+		{
+			echo "<tr>";
+			echo "<td>".$result->getId()."</td>";
+			echo "<td>".$result->getAmmount()."</td>";
+			echo "<td>".$result->getCreated()."</td>";
+			echo "<td>".$result->getModified()."</td>";
+			echo "<td>".$result->getBudget()."</td>";
+			echo "<td>".$result->getSubCategory()."</td>";
+			echo "</tr>";
+		}
+	}
 }
 ?>

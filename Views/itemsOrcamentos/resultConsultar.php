@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*------------------------------------------------------------------------------------------------------------------------
 * DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
@@ -12,62 +12,51 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        excluir.php
-* Descrição:   Exclui informações de items de orçamento
+* Nome:        resultConsultar.php
+* Descrição:   Mostra informações do item de orçamento selecionado
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
-* Data:        21/03/2012
+* Data:        25/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
-// Instanciando classes
-$functionsBudgetRecords = new FunctionsBudget_Records();
+// recuperando informações da tela anterior
+$idItemOrcamento = $_POST['idItemOrcamento'];
+
+// instancia de classes
 $pageMaker = new PageMaker();
+$functionsBudgetRecords = new FunctionsBudget_Records();
 
-// Funções do Doctrine
-$budgetRecordsRepo  = $entityManager->getRepository("Budget_Records");
-$budgetRecordsResult = $budgetRecordsRepo->findAll();
+// funções do doctrine
 
+$budgetRecordsRepo = $entityManager->getRepository("Budget_Records");
+$budgetRecordsResult = $budgetRecordsRepo->findBy(array('id'=> $idItemOrcamento));
 
 ?>
 
 <html>
-<head>
-<script type="text/javascript" src="../scripts/functions.js"></script>
-<meta charset="ISO-8859-1">
-<title>Finance-37571: Excluir Items de um Orçamento:</title>
-</head>
-
-<body>
-<form action="resultExcluir.php" name="form" method="post">
-	<h1 align="center">Items à Excluir:</h1>
-	<p align="center">
+	<head>
+		<title>Informações do Orçamento:</title>
+	</head>
+	<body>
+		<a href="../">Voltar para menu principal</a>
+		<h1 align="center">Orçamento solicitado:</h1>
+	
+		<p align="center">
 		<table border=2>
-		
 			<tr>
-				<td><label align="center">Items de orçamentos:</label></td>
-				<td>
-				<select name="idItemOrcamento">
-					<option />
-				<?php
-				$functionsBudgetRecords->listarItemsOrcamentosSelect($budgetRecordsResult);
-				?>
-				</select>
-				</td>
+				<td>Id:</td>
+				<td>Nome:</td>
+				<td>Criado em:</td>
+				<td>Modificado em:</td>
+				<td>Informações sobre orçamento relacionado:</td>
+				<td>Informações sobre a sub categoria relacionada:</td>
 			</tr>
-		
+				<?php $functionsBudgetRecords->listarItemsOrcamentoTable($budgetRecordsResult);?>
 		</table>
-	</p>
-	<p align="center">
-		<button type="submit" value="submit" name="Enviar"
-			>Enviar</button>
+	</body>
 
-	</p>
-	</form>
-</body>
-<?php 
+	<?php $pageMaker->printFooter();?>
 
-$pageMaker->printFooter();
-?>
 </html>
