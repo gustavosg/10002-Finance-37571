@@ -1,27 +1,45 @@
 <?php 
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        cadastrar.php
+* Descrição:   tela para inserir informações de categories
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        21/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
 
 require_once '../../bootstrap.php';
 
-$subCategoria = new Sub_Categories();
-$subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
-$subCategoriesResult = $subCategoriesRepo->findAll();
-
+// Instancia de classes
 $conta = new Accounts();
+$subCategoria = new Sub_Categories();
+$functionsExpenditures = new FunctionsExpenditures();
+$functionsSub_Categories = new FunctionsSub_Categories();
+$functionsAccounts = new FunctionsAccounts();
+$pageMaker = new PageMaker();
+
+// Funções do Doctrine
 $accountRepo = $entityManager->getRepository("Accounts");
 $accountsResult = $accountRepo->findAll();
 
-
-$functionsExpenditures = new FunctionsExpenditures();
-
-$functionsAccounts = new FunctionsAccounts();
-
-
+$subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
+$subCategoriesResult = $subCategoriesRepo->findAll();
 
 ?>
-<!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="../scripts/functions.js"></script>
 <meta charset="ISO-8859-1">
 <title>Finance-37571: Cadastramento de Despesas:</title>
 </head>
@@ -39,7 +57,9 @@ $functionsAccounts = new FunctionsAccounts();
 				<td>
 					<select name="SubCategoria">
 					<option />
-					<?php $functionsExpenditures->exibirListaSubCategorias($subCategoriesResult);?>
+					<?php
+					 $functionsSub_Categories->listarSubCategorias($subCategoriesResult);
+					 ?>
 					</select>
 				</td>
 			</tr>
@@ -62,21 +82,17 @@ $functionsAccounts = new FunctionsAccounts();
 			</tr>
 			<tr>
 				<td><label align="center">Descrição da Despesa:</label></td>
-				<td><textarea maxlength="50" style="width: 400px; height: 200px;" name="nomeDespesas" id="nomeDespesas" > </textarea></td>
+				<td><textarea style="width: 400px; height: 200px;" name="nomeDespesas" id="nomeDespesas" > </textarea></td>
 			</tr>
 		</table>
 	</p>
 	<br>
 	<p align="center">
 		<button type="submit" value="submit" name="Enviar">Enviar</button>
-
-		<button type="button" value="Limpar" name="Limpar" onclick="limparCamposDespesas()">Limpar</button>
-		<br>
 	</p>
 	</form>
 </body>
-	<footer style="position: fixed; right: 3px; bottom: 0px;">
-		Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-		PUC Minas - 2011-2012
-	</footer>
+	<?php 
+	$pageMaker->printFooter();
+	?>	
 </html>

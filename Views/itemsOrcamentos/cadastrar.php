@@ -21,7 +21,7 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
-$itemsOrcamento = new BudgetRecords();
+$itemsOrcamento = new Budget_Records();
 $functionsBudgets = new FunctionsBudgets();
 $functionsSub_Categories = new FunctionsSub_Categories();
 $subCategoria = new Sub_Categories();
@@ -31,8 +31,6 @@ $subCategoriesResult= $subCategoriesRepo->findAll();
 
 $budgetsRepo = $entityManager->getRepository("Budgets");
 $budgetsResult = $budgetsRepo->findAll();
-
-// TODO Gustavo: Parei no cadastro de Items de Orçamento
 
 ?>
 

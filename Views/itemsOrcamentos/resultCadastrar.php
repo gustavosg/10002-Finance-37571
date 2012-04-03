@@ -13,7 +13,7 @@
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:        resultCadastrar.php
-* Descrição:   Insere informações para BudgetRecords
+* Descrição:   Insere informações para items de orçamento
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
 * Data:        25/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
@@ -34,9 +34,7 @@ $nomeSubCategoria = '';
 $dataCriacaoSubCategoria = '';
 $dataModificacaoSubCategoria = '';
 
-
 $categoria = new Categories();
-
 
 // Capturando informações da tela anterior
 $idSubCategoria = $_POST['idSubCategoria'];

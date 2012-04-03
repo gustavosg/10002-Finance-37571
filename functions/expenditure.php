@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------------------------------------------------
-* DADOS DO SISTEMA
+ * DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:		Finance-37571
 * Área:		Finanças
@@ -23,12 +23,8 @@ class FunctionsExpenditures{
 
 	function exibirListaSubCategorias($subCategoriesResult){
 		foreach ($subCategoriesResult as $result)
-			listaSelectSubCategorias($result);
-		
+		listaSelectSubCategorias($result);
 	}
 
-	function listaSelectSubCategorias($result){
-		echo "<option >".$result->getName()."</option>";
-	}
 }
 ?>

@@ -35,7 +35,7 @@ class Budget_Records{
 	**/
 	protected $subCategory;
 
-	/** @Column(type="decimal") **/
+	/** @Column(type="decimal",precision=6, scale=2) **/
 	protected $ammount;
 
 	/** @Column **/
