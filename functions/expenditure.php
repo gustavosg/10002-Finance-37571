@@ -21,9 +21,24 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 class FunctionsExpenditures{
 
-	function exibirListaSubCategorias($subCategoriesResult){
-		foreach ($subCategoriesResult as $result)
-		listaSelectSubCategorias($result);
+	/**
+	* Lista despesas em formato Table Row
+	* @param entity $expenditure
+	*/
+	function listarDespesasTable($expenditureResult){
+		foreach ($expenditureResult as $result)
+		{
+			echo "<tr>";
+			echo "<td>".$result->getId()."</td>";
+			echo "<td>".$result->getAmmount()."</td>";
+			echo "<td>".$result->getDate()."</td>";
+			echo "<td>".$result->getCreated()."</td>";
+			echo "<td>".$result->getModified()."</td>";
+			echo "<td>".$result->getDescription()."</td>";
+			echo "<td>".$result->getAccount()."</td>";
+			echo "<td>".$result->getSubCategory()."</td>";
+			echo "</tr>";
+		}
 	}
 
 }

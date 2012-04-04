@@ -29,10 +29,14 @@ class Expenditure{
 	/** @Id @GeneratedValue @Column(type="integer") */
 	protected $id;
 
-	/** @ManyToOne(targetEntity="sub_Categories", cascade="merge") */
+	/** @ManyToOne(targetEntity="sub_Categories", cascade="all") 
+	 * @JoinColumn(name="sub_category_id", referencedColumnName="id")
+	 * */
 	protected $subCategory;
 
-	/** @ManyToOne(targetEntity="Accounts", inversedBy="expenditure") */
+	/** @ManyToOne(targetEntity="Accounts", inversedBy="expenditure", cascade="all")
+	 * @JoinColumn(name="account_id", referencedColumnName="id")
+	 *  */
 	protected $account;
 
 	/** @Column **/
@@ -53,9 +57,9 @@ class Expenditure{
 	/**
 	 * É necessário ter uma Account e uma SubCategory para ter uma Expenditure
 	 */
-	public function __construct(Accounts $accountId, SubCategories $subCategoryId){
-		$this->accountId = $accountId;
-		$this->subCategoryId = $subCategoryId;
+	public function __construct(Accounts $account = null, Sub_Categories $subCategory= null){
+		$this->$account = $account;
+		$this->subCategory = $subCategory;
 	}
 
 	public function getId(){
@@ -64,7 +68,20 @@ class Expenditure{
 	public function setId($id){
 		$this->id = $id;
 	}
-
+	
+	public function getSubCategory(){
+		return $this->subCategory;
+	}
+	public function setSubCategory(Sub_Categories $subCategory){
+		$this->subCategory = $subCategory;
+	}
+	
+	public function getAccount(){
+		return $this->account;
+	}
+	public function setAccount(Accounts $account){
+		$this->account = $account;
+	}
 
 	public function getDate(){
 		return $this->date;
@@ -73,6 +90,14 @@ class Expenditure{
 		$this->date = $date;
 	}
 
+	public function getAmmount(){
+		return $this->ammount;
+	}
+	public function setAmmount($ammount){
+		$this->ammount = $ammount;
+	}
+	
+	
 	public function getCreated(){
 		return $this->created;
 	}
@@ -92,6 +117,14 @@ class Expenditure{
 	}
 	public function setDescription($description){
 		$this->description = $description;
+	}
+	
+	public function __toString(){
+		return " ID: [".($this->id==null?"-":$this->id)."]  , Quantia:" . ($this->ammount). "  , Data: ". ( $this->date == null? "-" : $this->date )." , 
+		Criado em: ". ($this->created== null? "-":$this->created). "
+		 Modificado em: ". ($this->modified == null? "-":$this->modified ). "
+		 Conta: ". $this->account . "
+		 Sub Categoria: ".$this->subCategory->getName() . ". " ;
 	}
 }
 ?>

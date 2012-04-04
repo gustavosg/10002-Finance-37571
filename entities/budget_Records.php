@@ -95,10 +95,8 @@ class Budget_Records{
 
 	public function __toString(){
 		return "Informações do Item: <br /> ID: [".($this->id==null?"-":$this->id)."], Quantia: ". $this->ammount. " , Criado em: ". $this->created . " , Modificado em: ". $this->modified . "
-		<br />
 		 Orçamento: " . $this->budget. ",
-		 <br />
-		 SubCategoria: " . $this->subCategory . "	. " ;
+		 Sub Categoria: " . $this->subCategory . "	. " ;
 	}
 }
 

@@ -54,8 +54,8 @@ $subCategoriesResult = $subCategoriesRepo->findAll();
 		
 			<tr>
 				<td>Sub-Categoria:</td>
-				<td>
-					<select name="SubCategoria">
+				<td colspan="3">
+					<select name="idSubCategoria">
 					<option />
 					<?php
 					 $functionsSub_Categories->listarSubCategorias($subCategoriesResult);
@@ -65,24 +65,26 @@ $subCategoriesResult = $subCategoriesRepo->findAll();
 			</tr>
 			<tr>
 				<td>Conta: </td>
-				<td>
-					<select name="Conta">
+				<td colspan="3">
+					<select name="nomeConta">
 						<option />
 						<?php $functionsAccounts->exibirListaSelectContas($accountsResult);?>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>Data:</td>
-				<td><input type="text" name="Data" size="15px" /></td>
+				<td>Data: <font size="2" color="red">(formato: DD/MM/YYYY)</font></td>
+				<td><input type="text" name="data" size="15px" /></td>
+				<td>Hora: <font size="2" color="red">(formato: HH:MM)</font></td>
+				<td><input type="text" name="hora" size="15px"  /></td>
 			</tr>
 			<tr>
 				<td>Quantia:</td>
-				<td><input type="text" name="Quantia" size="15px" /></td>
+				<td colspan="3"><input type="text" name="quantia" size="15px" /></td>
 			</tr>
 			<tr>
 				<td><label align="center">Descrição da Despesa:</label></td>
-				<td><textarea style="width: 400px; height: 200px;" name="nomeDespesas" id="nomeDespesas" > </textarea></td>
+				<td colspan="3"><textarea style="width: 400px; height: 200px;" name="descricaoDespesa" id="descricaoDespesa" > </textarea></td>
 			</tr>
 		</table>
 	</p>
