@@ -37,6 +37,28 @@ $pageMaker = new PageMaker();
 			</tr>
 		</tbody>
 
+		<thead>
+			<tr>
+			<th colspan="2">Relatórios personalizados: </th>
+			</tr>
+		</thead>
+
+		<tbody>
+		<tr>
+			<td><a href="relatorioPersonalizado/relatorioTotalPrevisto.php">Total previsto (orçamento)</a></td>
+			<td><a href="relatorioPersonalizado/relatorioGastoMes.php">Valor gasto em um mês</a></td>
+		</tr>
+		<tr>
+			<td><a href="relatorioPersonalizado/relatorioSaldoMes.php">Saldo em determinado mês</a></td>
+			<td><a href="relatorioPersonalizado/relatorioGastoCategoriaMes.php">Gastos por categoria em um determinado mês</a></td>
+		</tr>
+		<tr>
+			<td><a href="relatorioPersonalizado/relatorioGastoContaMes.php">Gastos por conta em um determinado mês</a></td>
+			<td><a href="relatorioPersonalizado/relatorioExtrato.php">Gasto extratificado por mês</a></td>
+		</tr>
+		
+		</tbody>
+
 	</table>
 	
 </body>

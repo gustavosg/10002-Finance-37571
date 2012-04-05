@@ -8,9 +8,6 @@ print_r($categoria);
 $categorieRepo = $entityManager->getRepository("Categories");
 $categoriesResult = $categorieRepo->findBy(array ('name' => $categoria->getName()));
 
-// TODO Perguntar ao Ítalo porque não remove, sendo que a explicação do site é a mesma:
-// http://docs.doctrine-project.org/projects/doctrine-orm/en/2.0.x/reference/working-with-objects.html
-
 $idCategoria = 0;
 
 foreach ($categoriesResult as $categorie)
@@ -32,7 +29,7 @@ $categoriesResult = $categorieRepo->find($idCategoria);
 <?php 
 
 // TODO Gustavo nhaca do caralho, porque não imprime!
-//echo $conta->ToString();
+echo $conta;
 
 $entityManager->remove($categoriesResult);
 $entityManager->flush();

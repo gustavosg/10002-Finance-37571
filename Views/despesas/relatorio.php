@@ -30,7 +30,6 @@ $functionsExpenditures = new FunctionsExpenditures();
 $expenditureRepo = $entityManager->getRepository("Expenditure");
 $expenditureResult = $expenditureRepo->findAll();
 
-// TODO Gustavo: Debugar erro de Sub Categoria relacionada
 ?>
 
 <html>
