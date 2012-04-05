@@ -29,14 +29,14 @@ class Expenditure{
 	/** @Id @GeneratedValue @Column(type="integer") */
 	protected $id;
 
-	/** @ManyToOne(targetEntity="sub_Categories", cascade="all") 
-	 * @JoinColumn(name="sub_category_id", referencedColumnName="id")
+	/** @ManyToOne(targetEntity="Sub_Categories", cascade="all")
+	 * * @JoinColumn(name="sub_category_id", referencedColumnName="id") 
 	 * */
 	protected $subCategory;
 
-	/** @ManyToOne(targetEntity="Accounts", inversedBy="expenditure", cascade="all")
+	/** @ManyToOne(targetEntity="Accounts", inversedBy="expenditure", cascade="merge")
 	 * @JoinColumn(name="account_id", referencedColumnName="id")
-	 *  */
+	 */
 	protected $account;
 
 	/** @Column **/
@@ -58,7 +58,7 @@ class Expenditure{
 	 * É necessário ter uma Account e uma SubCategory para ter uma Expenditure
 	 */
 	public function __construct(Accounts $account = null, Sub_Categories $subCategory= null){
-		$this->$account = $account;
+		$this->account = $account;
 		$this->subCategory = $subCategory;
 	}
 

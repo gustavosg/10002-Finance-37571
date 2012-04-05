@@ -1,3 +1,10 @@
+<?php 
+require_once '../bootstrap.php';
+$pageMaker = new PageMaker();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,8 +40,7 @@
 	</table>
 	
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php 
+$pageMaker->printFooter();
+?>
 </html>

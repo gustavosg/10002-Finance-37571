@@ -40,6 +40,17 @@ class FunctionsExpenditures{
 			echo "</tr>";
 		}
 	}
+	
+	/**
+	* Lista items de orçamentos em formato Select List Box
+	* @param entity $BudgetRecords
+	*/
+	function listarDespesasSelect($expenditureResult){
+		foreach($expenditureResult as $result) {
+			echo "<option value=".$result->getId()." >Quantia: ".$result->getAmmount().", Data: ". $result->getDate().", Conta: ".$result->getAccount() ."</option>";
+		}
+	}
+	
 
 }
 ?>

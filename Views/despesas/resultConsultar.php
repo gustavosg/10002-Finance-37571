@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*------------------------------------------------------------------------------------------------------------------------
 * DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
@@ -12,64 +12,53 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        excluir.php
-* Descrição:   Exclui informações de despesa
+* Nome:        resultConsultar.php
+* Descrição:   Mostra informações da despesa selecionada
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
-* Data:        21/03/2012
+* Data:        25/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
+// recuperando informações da tela anterior
+$idDespesa = $_POST['idDespesa'];
+
 // instancia de classes
 $pageMaker = new PageMaker();
 $functionsExpenditures = new FunctionsExpenditures();
 
-// Funções do Doctrine
+// funções do doctrine
+
 $expenditureRepo = $entityManager->getRepository("Expenditure");
-$expenditureResult = $expenditureRepo->findAll();
-
-
+$expenditureResult = $expenditureRepo->findBy(array('id'=> $idDespesa));
 
 ?>
 
 <html>
-<head>
-<script type="text/javascript" src="../scripts/functions.js"></script>
-<meta charset="ISO-8859-1">
-<title>Finance-37571: Excluir Despesas:</title>
-</head>
+	<head>
+		<title>Informações da Despesa:</title>
+	</head>
+	<body>
+		<a href="../">Voltar para menu principal</a>
+		<h1 align="center">Despesa solicitada:</h1>
+	
+		<p align="center">
+		<table border=2>
+			<tr>
+				<td>ID: </td>
+				<td>Quantia:</td>
+				<td>Data:</td>
+				<td>Data de criação:</td>
+				<td>Data de modificação:</td>
+				<td>Descrição:</td>
+				<td>Informações sobre conta relacionada:</td>
+				<td>Informações sobre a sub categoria relacionada:</td>
+			</tr>
+				<?php $functionsExpenditures->listarDespesasTable($expenditureResult);?>
+		</table>
+	</body>
 
-<body>
-<form action="resultExcluir.php" name="form" method="post">
-	<h1 align="center">Entre com as informações:</h1>
-	<br>
-	<p align="center">
+	<?php $pageMaker->printFooter();?>
 
-			<table border=2>
-		
-				<tr>
-					<td><label align="center">Despesas:</label></td>
-					<td>
-					<select name="idDespesa">
-						<option />
-					<?php
-					$functionsExpenditures->listarDespesasSelect($expenditureResult);
-					?>
-					</select>
-					</td>
-				</tr>
-		
-			</table>
-	</p>
-	<br>
-	<p align="center">
-		<button type="submit" value="submit" name="Enviar"
-			>Enviar</button>
-	</p>
-	</form>
-</body>
-<?php 
-$pageMaker->printFooter();
-?>
 </html>
