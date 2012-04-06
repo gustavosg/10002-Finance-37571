@@ -34,7 +34,7 @@ class Expenditure{
 	 * */
 	protected $subCategory;
 
-	/** @ManyToOne(targetEntity="Accounts", inversedBy="expenditure", cascade="merge")
+	/** @ManyToOne(targetEntity="Accounts", cascade="merge")
 	 * @JoinColumn(name="account_id", referencedColumnName="id")
 	 */
 	protected $account;
@@ -120,7 +120,7 @@ class Expenditure{
 	}
 	
 	public function __toString(){
-		return " ID: [".($this->id==null?"-":$this->id)."]  , Quantia:" . ($this->ammount). "  , Data: ". ( $this->date == null? "-" : $this->date )." , 
+		return " ID: [".($this->id==null?"-":$this->id)."]  , Quantia: R$" . ($this->ammount). "  , Data: ". ( $this->date == null? "-" : $this->date )." , 
 		Criado em: ". ($this->created== null? "-":$this->created). "
 		 Modificado em: ". ($this->modified == null? "-":$this->modified ). "
 		 Conta: ". $this->account . "
