@@ -42,6 +42,22 @@ class FunctionsExpenditures{
 	}
 	
 	/**
+	* Lista despesas cadastradas em objetos do tipo radio button.
+	* @param Object List entity type $expenditures
+	*/
+	function listarDespesasEdicao($expendituresResult){
+		foreach ($expendituresResult as $result)
+		{
+			echo "<tr>";
+			echo "<td> <input type=RADIO name='idDespesa' value='".$result->getId()."'></td>";
+			echo "<td>".$result->getId()."</td>";
+			echo "<td>". $result->getAmmount(). "</td>";
+			echo "<td>". $result->getDate(). "</td>";
+			echo "</tr>";
+		}
+	}
+	
+	/**
 	* Lista items de orçamentos em formato Select List Box
 	* @param entity $BudgetRecords
 	*/

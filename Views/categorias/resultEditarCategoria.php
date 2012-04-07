@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------------------------------------------------
- * DADOS DO SISTEMA
+* DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:		Finance-37571
 * Área:		Finanças
@@ -12,54 +12,50 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        Categories.php
-* Descrição:   Funções para  Categories
+* Nome:        resultEditarCategoria.php
+* Descrição:   Classe para executar resultado de edição de Categoria
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
-* Data:        25/03/2012
+* Data:        27/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-class FunctionsCategories{
 
-	/**
-	 * Lista Categorias em formato Select List Box
-	 * @param entity $Categories
-	 */
-	function listarCategorias($infoCategory){
-		foreach($infoCategory as $result) {
-			echo "<option value='".$result->getId()."' >".$result->getName()."</option>";
-		}
-	}
+require_once '../../bootstrap.php';
 
-	/**
-	* Lista categorias cadastradas em objetos do tipo radio button.
-	* @param Object List entity type $categories
-	*/
-	function listarCategoriasEdicao($categoriesResult){
-		foreach ($categoriesResult as $result)
-		{
-			echo "<tr>";
-			echo "<td> <input type=RADIO name='nomeCategoria' value='".$result->getName()."'></td>";
-			echo "<td>".$result->getId()."</td>";
-			echo "<td>". $result->getName(). "</td>";
-			echo "</tr>";
-		}
-	}
-	
-	/**
-	 * Lista Categorias em formato Table
-	 * @param entity $Categories
-	 */
-	function listarTodasCategorias($categories){
-		foreach ($categories as $result){
-			echo "<tr>";
-			echo "<td>".$result->getId()."</td>";
-			echo "<td>". $result->getName(). "</td>";
-			echo "<td>". $result->getCreated() . "</td>";
-			echo "<td>". $result->getModified(). "</td>";
-			echo "</tr>";
-		}
-	}
+$idCategoria = $_POST['idCategoria'];
+$nomeCategoria = $_POST['nomeCategoria'];
+$categoriaCriada = $_POST['categoriaCriada'];
+$categoriaModificada = date("Y/m/d H:i:s");
 
-}
+// Instância de classes
+$categoria = new Categories($idCategoria, $nomeCategoria);
+$pageMaker = new PageMaker();
+
+$categoria->setId($idCategoria);
+$categoria->setName($nomeCategoria);
+$categoria->setCreated($categoriaCriada);
+$categoria->setModified($categoriaModificada);
+
 ?>
+
+<html>
+	<head>
+		<title>Finance-37571: Resultado de edição de Categoria:</title>
+	</head>
+	<body>
+	<a href="../">Voltar para menu principal</a>
+		<h1 align="center">Edição de Categoria:</h1>
+		<p align="center" />
+	
+	<?php 
+		echo $categoria;
+		
+		$entityManager->merge($categoria);
+		$entityManager->flush();
+	?>
+	</body>
+	<?php 
+	$pageMaker->printFooter();
+	?>
+
+</html>

@@ -32,6 +32,22 @@ class FunctionsBudget_Records{
 	}
 	
 	/**
+	* Lista items de orcamento cadastradas em objetos do tipo radio button.
+	* @param Object List entity type $budgetRecordss
+	*/
+	function listarItemsOrcamentoEdicao($budgetRecordssResult){
+		foreach ($budgetRecordssResult as $result)
+		{
+			echo "<tr>";
+			echo "<td> <input type=RADIO name='idItemOrcamento' value='".$result->getId()."'></td>";
+			echo "<td>".$result->getId()."</td>";
+			echo "<td>". $result->getAmmount(). "</td>";
+			echo "<td>". $result->getCreated(). "</td>";
+			echo "</tr>";
+		}
+	}
+	
+	/**
 	* Lista items de orçamentos em formato Table Row
 	* @param entity $BudgetRecords
 	*/

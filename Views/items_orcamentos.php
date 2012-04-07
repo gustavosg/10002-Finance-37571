@@ -12,7 +12,7 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        items_orcamentos.php
+* Nome:        itemsOrcamentos.php
 * Descrição:   Tela de chamada para itemsOrçamentos
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
 * Data:        21/03/2012
@@ -34,13 +34,17 @@
 <table align="center" border="2" rules="all" >
 		<tbody>
 			<tr>
-				<td><li/><a href="itemsOrcamentos/cadastrar.php">Cadastrar Items de Orçamento</a></td>
-				<td><li/><a href="itemsOrcamentos/excluir.php">Excluir Items de Orçamento</a></td>
+				<td><li/><a href="itemsOrcamentos/cadastrar.php">Cadastrar Item de Orçamento</a></td>
+				<td><li/><a href="itemsOrcamentos/consultar.php">Consultar Item de Orçamento</a></td>
+				
 			</tr>
 			<tr>
-				<td><li/><a href="itemsOrcamentos/consultar.php">Consultar Items de Orçamento</a></td>
-				<td><li/><a href="itemsOrcamentos/relatorio.php">Relatório Items de Orçamento</a></td>
-
+				
+				<td><li/><a href="itemsOrcamentos/editar.php">Editar Item de Orçamento</a></td>
+				<td><li/><a href="itemsOrcamentos/excluir.php">Excluir Item de Orçamento</a></td>
+			</tr>
+			
+			<td colspan="2" align="center"><li/><a href="itemsOrcamentos/relatorio.php">Relatório Item de Orçamento</a></td>
 			</tr>
 
 		</tbody>

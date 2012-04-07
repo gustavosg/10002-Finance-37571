@@ -29,7 +29,7 @@ class Expenditure{
 	/** @Id @GeneratedValue @Column(type="integer") */
 	protected $id;
 
-	/** @ManyToOne(targetEntity="Sub_Categories", cascade="all")
+	/** @ManyToOne(targetEntity="Sub_Categories", cascade="merge")
 	 * * @JoinColumn(name="sub_category_id", referencedColumnName="id") 
 	 * */
 	protected $subCategory;

@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------------------------------------------------
- * DADOS DO SISTEMA
+* DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:		Finance-37571
 * Área:		Finanças
@@ -12,54 +12,59 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        Categories.php
-* Descrição:   Funções para  Categories
+* Nome:        resultEditarConta.php
+* Descrição:   Classe para executar resultado de edição de Conta
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
-* Data:        25/03/2012
+* Data:        27/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-class FunctionsCategories{
 
-	/**
-	 * Lista Categorias em formato Select List Box
-	 * @param entity $Categories
-	 */
-	function listarCategorias($infoCategory){
-		foreach($infoCategory as $result) {
-			echo "<option value='".$result->getId()."' >".$result->getName()."</option>";
-		}
-	}
+require_once '../../bootstrap.php';
 
-	/**
-	* Lista categorias cadastradas em objetos do tipo radio button.
-	* @param Object List entity type $categories
-	*/
-	function listarCategoriasEdicao($categoriesResult){
-		foreach ($categoriesResult as $result)
-		{
-			echo "<tr>";
-			echo "<td> <input type=RADIO name='nomeCategoria' value='".$result->getName()."'></td>";
-			echo "<td>".$result->getId()."</td>";
-			echo "<td>". $result->getName(). "</td>";
-			echo "</tr>";
-		}
-	}
-	
-	/**
-	 * Lista Categorias em formato Table
-	 * @param entity $Categories
-	 */
-	function listarTodasCategorias($categories){
-		foreach ($categories as $result){
-			echo "<tr>";
-			echo "<td>".$result->getId()."</td>";
-			echo "<td>". $result->getName(). "</td>";
-			echo "<td>". $result->getCreated() . "</td>";
-			echo "<td>". $result->getModified(). "</td>";
-			echo "</tr>";
-		}
-	}
+// Capturando informações da tela anterior
+$idOrcamento = $_POST['idOrcamento'];
+$nomeOrcamento = $_POST['nomeOrcamento'];
+$dataCriacao = $_POST['orcamentoCriada'];
 
-}
+// Instanciando classes
+$orcamento = new Budgets($idOrcamento, $nomeOrcamento);
+$functionsBudgets = new FunctionsBudgets();
+$pageMaker = new PageMaker();
+
+// Definição de valores
+$orcamento->setId($idOrcamento);
+$orcamento->setName($nomeOrcamento);
+$orcamento->setCreated($dataCriacao);
+$orcamento->setModified(date("Y/m/d H:i:s"));
+
+
+
 ?>
+
+<html>
+	<head>
+		<title>Finance-37571: Resultado de edição de Conta:</title>
+	</head>
+	<body>
+	<a href="../">Voltar para menu principal</a>
+	
+		<h1 align="center">Edição de Conta:</h1>
+		<p align="center" />
+	
+	<?php 
+	
+	echo $orcamento;
+	
+	// Funções do Doctrine
+	$entityManager->merge($orcamento);
+	$entityManager->flush();
+	
+	?>
+	
+	</body>
+	<?php 
+	$pageMaker->printFooter();
+	?>
+
+</html>

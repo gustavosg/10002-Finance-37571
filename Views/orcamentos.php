@@ -24,7 +24,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Operações de Despesa:</title>
+<title>Operações de Orçamento:</title>
 </head>
 <body>
 
@@ -33,13 +33,17 @@
 	<table align="center" border="2" rules="all" >
 		<tbody>
 			<tr>
-				<td><li/><a href="orcamentos/cadastrar.php">Cadastrar Orçamento</a></td>
-				<td><li/><a href="orcamentos/excluir.php">Excluir Orçamento</a></td>
+				<td><li/><a href="orcamentos/cadastrar.php">Cadastrar Item de Orçamento</a></td>
+				<td><li/><a href="orcamentos/consultar.php">Consultar Item de Orçamento</a></td>
+				
 			</tr>
 			<tr>
-				<td><li/><a href="orcamentos/consultar.php">Consultar Orçamento</a></td>
-				<td><li/><a href="orcamentos/relatorio.php">Relatório Orçamento</a></td>
-
+				
+				<td><li/><a href="orcamentos/editar.php">Editar Item de Orçamento</a></td>
+				<td><li/><a href="orcamentos/excluir.php">Excluir Item de Orçamento</a></td>
+			</tr>
+			
+			<td colspan="2" align="center"><li/><a href="orcamentos/relatorio.php">Relatório Item de Orçamento</a></td>
 			</tr>
 
 		</tbody>

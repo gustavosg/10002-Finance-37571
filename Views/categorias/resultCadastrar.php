@@ -29,6 +29,9 @@ $categoria = new Categories();
 $functionsCategories = new FunctionsCategories();
 $pageMaker = new PageMaker();
 
+// Declaração de variáveis
+$idCategoria = 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -52,17 +55,18 @@ $pageMaker = new PageMaker();
 			$entityManager->persist($categoria);
 			$entityManager->flush();
 			
-			// O titulo e o código a seguir só será executado se o flush for concluído com exito.
-			
 			?>
 			
 			<h1 align="center">Categoria Cadastrada:</h1>
 			<?php 
 			
 			$categoriesRepo = $entityManager->getRepository("Categories");
-			$categoriesResult = $categoriesRepo->findAll();
+			$categoriesResult = $categoriesRepo->findBy(array('name' => $nomeCategoria));
 			
-			$functionsCategories->exibirRegistro($categoriesResult);
+			foreach ($categoriesResult as $result)
+				$idCategoria = $result->getId();
+			$categoria->setId($idCategoria);
+			echo $categoria;
 			?>
 	
 		</form>

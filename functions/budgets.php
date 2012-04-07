@@ -32,6 +32,21 @@ class FunctionsBudgets{
 	}
 	
 	/**
+	* Lista orçamento cadastrado em objetos do tipo radio button.
+	* @param Object List entity type $budgets
+	*/
+	function listarOrcamentosEdicao($budgetsResult){
+		foreach ($budgetsResult as $result)
+		{
+			echo "<tr>";
+			echo "<td> <input type=RADIO name='idOrcamento' value='".$result->getId()."'></td>";
+			echo "<td>".$result->getId()."</td>";
+			echo "<td>". $result->getName(). "</td>";
+			echo "</tr>";
+		}
+	}
+	
+	/**
 	 * Exibe dados de orçamento
 	 * @param Object List entity type $budgets
 	 */

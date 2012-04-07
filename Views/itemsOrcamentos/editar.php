@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------------------------------------------------------
- * DADOS DO SISTEMA
+* DADOS DO SISTEMA
 * ------------------------------------------------------------------------------------------------------------------------
 * Nome:		Finance-37571
 * Área:		Finanças
@@ -12,54 +12,57 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * DADOS DO ARQUIVO
 * ------------------------------------------------------------------------------------------------------------------------
-* Nome:        Categories.php
-* Descrição:   Funções para  Categories
+* Nome:        editar.php
+* Descrição:   Clase para selecionar item de orçamento à editar
 * Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
 * Data:        25/03/2012
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-class FunctionsCategories{
+require_once '../../bootstrap.php';
 
-	/**
-	 * Lista Categorias em formato Select List Box
-	 * @param entity $Categories
-	 */
-	function listarCategorias($infoCategory){
-		foreach($infoCategory as $result) {
-			echo "<option value='".$result->getId()."' >".$result->getName()."</option>";
-		}
-	}
+$itemOrcamento = new Budget_Records();
 
-	/**
-	* Lista categorias cadastradas em objetos do tipo radio button.
-	* @param Object List entity type $categories
-	*/
-	function listarCategoriasEdicao($categoriesResult){
-		foreach ($categoriesResult as $result)
-		{
-			echo "<tr>";
-			echo "<td> <input type=RADIO name='nomeCategoria' value='".$result->getName()."'></td>";
-			echo "<td>".$result->getId()."</td>";
-			echo "<td>". $result->getName(). "</td>";
-			echo "</tr>";
-		}
-	}
-	
-	/**
-	 * Lista Categorias em formato Table
-	 * @param entity $Categories
-	 */
-	function listarTodasCategorias($categories){
-		foreach ($categories as $result){
-			echo "<tr>";
-			echo "<td>".$result->getId()."</td>";
-			echo "<td>". $result->getName(). "</td>";
-			echo "<td>". $result->getCreated() . "</td>";
-			echo "<td>". $result->getModified(). "</td>";
-			echo "</tr>";
-		}
-	}
+$budgetRecordsRepo = $entityManager->getRepository("Budget_Records");
+$budgetRecordsResult = $budgetRecordsRepo->findAll();
 
-}
+// 
+$functionsBudget_Records = new FunctionsBudget_Records();
+
+$pageMaker = new PageMaker();
+
 ?>
+
+<html>
+
+	<head>
+		<title>Finance-37571: Edição de Conta:</title>
+		<script type="text/javascript" src="../../functions/functions.js"></script>
+	</head>
+
+	<body>
+	<form action="editarItemOrcamento.php" method="post">
+		<h1 align="center">Seleção de item de orçamento para edição:</h1>
+		
+		<table align="center" border="2" style="table-layout: auto; position: static; float: inherit;">
+			<tr>
+				<td>Seleção:</td>
+				<td width="50px">ID:</td>
+				<td width="150px">Quantia:</td>
+				<td width="150px">Data de Criação:</td>
+			</tr>
+
+			<?php  $functionsBudget_Records->listarItemsOrcamentoEdicao($budgetRecordsResult);?>
+						
+		</table>
+	<p align="center">
+		<button type="submit" value="submit" name="Alterar"	>Alterar</button>
+	
+	</p>
+	</form>
+	</body>
+	<?php 
+	$pageMaker->printFooter();
+	?>
+
+</html>
