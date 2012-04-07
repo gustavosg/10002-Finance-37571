@@ -31,46 +31,36 @@ $categoriesRepo = $entityManager->getRepository("Categories");
 $categoriesResult = $categoriesRepo->findAll();
 ?>
 <html>
-<head>
-<script type="text/javascript" src="../scripts/functions.js"></script>
-<meta charset="ISO-8859-1">
-<title>Finance-37571: Consultar Categoria:</title>
-</head>
+	<head>
+		<title>Finance-37571: Consultar Categoria:</title>
+	</head>
 
-<body>
-<form action="resultConsultar.php" name="form" method="post">
-	<h1 align="center">Entre com as informações:</h1>
-	<br>
-	<p align="center">
-		<table border=2>
-		
-		<tr>
-			<td>Categoria:</td>
-			<td>
-			<select name="idCategoria">
-			<option />
-			
-			<?php $functionsCategories->listarCategorias($categoriesResult);?>
-			
-			
-			</select>
-			
-			</td>
-		</tr>
-		
-		</table>
-
-
-	</p>
-	<br>
-	<p align="center">
-		<button type="submit" value="submit" name="Enviar"
-			>Enviar</button>
-
-	</p>
-	</form>
-</body>
-<?php 
-$pageMaker->printFooter();
-?>
+	<body>
+		<form action="resultConsultar.php" name="form" method="post">
+			<h1 align="center">Entre com as informações:</h1>
+			<br>
+			<p align="center">
+				<table border=2>
+					<tr>
+						<td>Categoria:</td>
+						<td>
+						<select name="idCategoria">
+						<option />
+							<?php 
+								$functionsCategories->listarCategorias($categoriesResult);
+							?>
+						</select>
+						</td>
+					</tr>
+				</table>
+			</p>
+			<br>
+			<p align="center">
+				<button type="submit" value="submit" name="Enviar">Enviar</button>
+			</p>
+		</form>
+	</body>
+	<?php 
+		$pageMaker->printFooter();
+	?>
 </html>

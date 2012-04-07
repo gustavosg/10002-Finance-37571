@@ -92,19 +92,19 @@ $itemOrcamento->setCreated(date("Y/m/d H:i:s"));
 	<head>
 		<script type="text/javascript" src="../scripts/functions.js"></script>
 		<meta charset="ISO-8859-1">
-		<title>Finance-37571: Cadastramento de Conta:</title>
+		<title>Finance-37571: Cadastramento de Item no Orçamento:</title>
 	</head>
 
 	<body>
 	
 	<a href="../">Voltar para menu principal</a>
 		<form action="" name="form" method="post">
-			<h1 align="center">Conta Cadastrada:</h1>
+			<h1 align="center">Item no orçamento cadastrado:</h1>
 			
 			<?php 
 				echo $itemOrcamento;
 				
-				$entityManager->persist($itemOrcamento);
+				$entityManager->merge($itemOrcamento);
 				$entityManager->flush();
 			?>
 	

@@ -56,7 +56,6 @@ $subCategoria->setCreated(date("Y/m/d H:i:s"));
 
 ?>
 
-<!DOCTYPE html>
 <html>
 	<head>
 		<script type="text/javascript" src="../scripts/functions.js"></script>
@@ -67,14 +66,15 @@ $subCategoria->setCreated(date("Y/m/d H:i:s"));
 	<body>
 	<a href="../">Voltar para menu principal</a>
 		<form action="" name="form" method="post">
-			<h1 align="left">SubCategoria Cadastrada!</h1>
-			
-			<?php 
-			echo $subCategoria->__toString();
-
-			$entityManager->merge($subCategoria);
-			$entityManager->flush();
-			?>
+			<h1 align="center">SubCategoria Cadastrada!</h1>
+			<p align=center>
+				<?php 
+					echo $subCategoria->__toString();
+		
+					$entityManager->merge($subCategoria);
+					$entityManager->flush();
+				?>
+			</p>
 		</form>
 	</body>
 <?php 

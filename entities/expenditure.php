@@ -29,12 +29,12 @@ class Expenditure{
 	/** @Id @GeneratedValue @Column(type="integer") */
 	protected $id;
 
-	/** @ManyToOne(targetEntity="Sub_Categories", cascade="merge")
+	/** @ManyToOne(targetEntity="Sub_Categories", cascade="all")
 	 * * @JoinColumn(name="sub_category_id", referencedColumnName="id") 
 	 * */
 	protected $subCategory;
 
-	/** @ManyToOne(targetEntity="Accounts", cascade="merge")
+	/** @ManyToOne(targetEntity="Accounts", cascade="all")
 	 * @JoinColumn(name="account_id", referencedColumnName="id")
 	 */
 	protected $account;

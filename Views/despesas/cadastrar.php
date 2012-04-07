@@ -58,7 +58,7 @@ $subCategoriesResult = $subCategoriesRepo->findAll();
 					<select name="idSubCategoria">
 					<option />
 					<?php
-					 $functionsSub_Categories->listarSubCategorias($subCategoriesResult);
+					 $functionsSub_Categories->listarSubCategoriasSelect($subCategoriesResult);
 					 ?>
 					</select>
 				</td>

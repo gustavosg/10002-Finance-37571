@@ -76,7 +76,7 @@ foreach ($accountsResult as $account)
 				<td><label>Selecione uma sub categoria: </label></td>
 				<td><select name="idSubCategoria">
 						<option />
-						<?php $functionsSub_Categories->listarSubCategorias($subCategoriesResult)?>
+						<?php $functionsSub_Categories->listarSubCategoriasSelect($subCategoriesResult)?>
 					</select>
 				</td>
 				</tr>

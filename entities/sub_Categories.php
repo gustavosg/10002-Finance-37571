@@ -76,10 +76,15 @@ class Sub_Categories {
 	public function getCategory(){
 		return $this->category;
 	}
+	public function setCategory(Categories $category)
+	{
+		$this->category = $category;
+	}
 
 	public function __toString(){
 		return "ID: [".($this->id==null?"-":$this->id)."], Nome:  " . ($this->name ). " , Data de Criação
-			".  ($this->created == null? "-" : $this->created) ." , Data de Modificação: ". ($this->modified == null? "-":$this->modified) . " . " ;
+			".  ($this->created == null? "-" : $this->created) ." , Data de Modificação: ". ($this->modified == null? "-":$this->modified) . " <br> 
+		".$this->category."." ;
 	}
 }
 ?>

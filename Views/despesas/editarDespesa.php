@@ -82,7 +82,7 @@ foreach ($expendituresResult as $expenditures)
 					<select name="idSubCategoria">
 					<option />
 					<?php
-					 $functionsSub_Categories->listarSubCategorias($subCategoriesResult);
+					 $functionsSub_Categories->listarSubCategoriasSelect($subCategoriesResult);
 					 ?>
 					</select>
 				</td>
@@ -90,7 +90,7 @@ foreach ($expendituresResult as $expenditures)
 			<tr>
 				<td style="color:red; " >Conta: </td>
 				<td colspan="3">
-					<select name="nomeConta">
+					<select name="idConta">
 						<option />
 						<?php $functionsAccounts->exibirListaSelectContas($accountsResult);?>
 					</select>

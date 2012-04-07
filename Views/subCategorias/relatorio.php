@@ -1,8 +1,30 @@
 <?php
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        relatorio.php
+* Descrição:   Relatório de Categorias
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        21/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
+
 require_once '../../bootstrap.php';
 
+// Instância de classes
+$pageMaker = new PageMaker();
 $functionsSub_Categories = new FunctionsSub_Categories();
-
 $categoria = new Categories();
 
 $categoriesRepo = $entityManager->getRepository("Categories");
@@ -25,6 +47,7 @@ $listSubCategories = $subCategoriesRepo->findAll();
 </head>
 
 <body>
+<a href="../">Voltar para menu principal</a>
 	<form action="" name="form" method="post">
 		<h1 align="center">Sub-Categorias que foram cadastradas:</h1>
 		<br>
@@ -42,8 +65,5 @@ $listSubCategories = $subCategoriesRepo->findAll();
 </table>
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php $pageMaker->printFooter();?>
 </html>

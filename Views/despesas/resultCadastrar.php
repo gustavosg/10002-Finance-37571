@@ -84,15 +84,17 @@ foreach ($subCategoriesResult as $result){
 }
 
 $subCategoria = new Sub_Categories($categoria);
-
+$subCategoria->setId($idSubCategoria);
 $subCategoria->setName($nomeSubCategoria);
 $subCategoria->setCreated($dataCriacaoSubCategoria);
 $subCategoria->setModified($dataModificacaoSubCategoria);
 
 $despesa = new Expenditure($conta, $subCategoria);
 
+$expendituresRepo = $entityManager->getRepository("Expenditure");
+
 $despesa->setAccount($conta);
-$despesa->setDate($dataCriacao);
+$despesa->setDate($horaCompleto);
 $despesa->setCreated(date("Y/m/d H:i:s"));
 $despesa->setAmmount($quantia);
 $despesa->setDescription($descricaoDespesa);

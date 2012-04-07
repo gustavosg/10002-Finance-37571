@@ -28,7 +28,7 @@ $despesaModificada = date("Y/m/d H:i:s");
 
 // Capturando informações da tela anterior
 $idSubCategoria = $_POST['idSubCategoria'];
-$nomeConta = $_POST['nomeConta'];
+$idConta = $_POST['idConta'];
 $quantiaDespesa = $_POST['quantiaDespesa'];
 $descricaoDespesa = $_POST['descricaoDespesa'];
 
@@ -43,17 +43,19 @@ $categoria = new Categories();
 // Funções do Doctrine
 $accountsRepo = $entityManager->getRepository("Accounts");
 
-$accountsResult  = $accountsRepo->findBy(array('name'=>$nomeConta));
+$accountsResult  = $accountsRepo->findBy(array('id'=>$idConta));
 
 foreach ($accountsResult as $result)
 {
 	$idConta = $result->getId();
+	$nomeConta = $result->getName();
 	$dataCriacao = $result->getCreated();
 	$dataModificacao = $result->getModified();
 }
 
-$conta = new Accounts( $idConta, $nomeConta);
+$conta = new Accounts( $idConta, null);
 $conta->setId($idConta);
+$conta->setName($nomeConta);
 $conta->setCreated($dataCriacao);
 $conta->setModified($dataModificacao);
 
@@ -79,6 +81,7 @@ $despesa->setId($idDespesa);
 $despesa->setAccount($conta);
 $despesa->setDate($dataCriacao);
 $despesa->setCreated(date("Y/m/d H:i:s"));
+$despesa->setModified($despesaModificada);
 $despesa->setAmmount($quantiaDespesa);
 $despesa->setDescription($descricaoDespesa);
 ?>

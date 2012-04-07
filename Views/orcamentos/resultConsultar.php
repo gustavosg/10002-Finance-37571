@@ -22,16 +22,16 @@
 require_once "../../bootstrap.php";
 
 // Capturando variáveis da tela anterior
-$nomeOrcamento = $_POST["nomeOrcamento"];
+$idOrcamento = $_POST["idOrcamento"];
 
 // Instanciando Classes
-$orcamento = new Budgets($nomeOrcamento);
-$functionsBudgets = new FunctionsBudgets();
 $pageMaker= new PageMaker();
+$orcamento = new Budgets($idOrcamento);
+$functionsBudgets = new FunctionsBudgets();
 
 // Funções do Doctrine
-$budgetsRepo = $entityManager->getRepository("budgets");
-$budgetsResult = $budgetsRepo->findBy(array ('name' => $orcamento->getName()));
+$budgetsRepo = $entityManager->getRepository("Budgets");
+$budgetsResult = $budgetsRepo->findBy(array ('id' => $idOrcamento));
 
 ?>
 
@@ -40,17 +40,20 @@ $budgetsResult = $budgetsRepo->findBy(array ('name' => $orcamento->getName()));
 		<title>Informações do Orçamento:</title>
 	</head>
 	<body>
-	<h1 align="center">Orçamento solicitado:</h1>
-
-	<p align="center">
-	<table border=2>
-		<tr>
-			<td>Id:</td>
-			<td>Nome:</td>
-			<td>Criado em:</td>
-			<td>Modificado em:</td>
-		</tr>
-			<?php $functionsBudgets->listarOrcamentos($budgetsResult);?>
+	<a href="../">Voltar para menu principal</a>
+		<h1 align="center">Orçamento solicitado:</h1>
+	
+		<p align="center">
+		<table border=2>
+			<tr>
+				<td>Id:</td>
+				<td>Nome:</td>
+				<td>Criado em:</td>
+				<td>Modificado em:</td>
+			</tr>
+				<?php
+				 	$functionsBudgets->listarOrcamentosTable($budgetsResult);
+				 ?>
 		</table>
 	</body>
 

@@ -26,9 +26,9 @@ class FunctionsSub_Categories{
 	* Lista sub categorias em formato Select List Box
 	* @param entity $subCategories
 	*/
-	function listarSubCategorias($listSubCategories){
-		foreach($listSubCategories as $subCategory) {
-			echo "<option value='".$subCategory->getId()."' >".$subCategory->getName()."</option>";
+	function listarSubCategoriasSelect($subCategoriesResult){
+		foreach($subCategoriesResult as $result) {
+			echo "<option value='".$result->getId()."' >ID: ".$result->getId()." , Nome: ".$result->getName()."</option>";
 		}
 	}
 	

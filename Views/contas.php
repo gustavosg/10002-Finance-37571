@@ -1,4 +1,30 @@
-<!DOCTYPE html>
+<?php 
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        contas.php
+* Descrição:   Tela de chamada para contas
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        25/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
+require_once '../bootstrap.php';
+
+// Instância de Classes
+$pageMaker = new PageMaker();
+?>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -19,13 +45,12 @@
 				<td><li/><a href="contas/excluir.php">Excluir Conta</a></td>
 			</tr>
 			
-			<td colspan=2><li/><a href="contas/relatorio.php">Relatório Conta</a></td>
+			<td colspan=2 align="center"><li/><a href="contas/relatorio.php">Relatório Conta</a></td>
 			
 		</tbody>
 	</table>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+<?php 
+$pageMaker->printFooter();
+?>
 </html>

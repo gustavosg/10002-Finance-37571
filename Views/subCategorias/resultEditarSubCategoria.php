@@ -21,11 +21,6 @@
 * ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
-// Declaração de variáveis
-$nomeCategoria = '';
-$dataCriacao = '';
-$dataModificacao = '';
-
 // Informações da tela anterior
 $idSubCategoria = $_POST['idSubCategoria'];
 $idCategoria = $_POST['idCategoria'];
@@ -33,9 +28,15 @@ $nomeSubCategoria = $_POST['nomeSubCategoria'];
 $subCategoriaCriada = $_POST['dataCriada'];
 $subCategoriaModificada = date("Y/m/d H:i:s");
 
-// Instanciando entidade Categoria
-$categoria = new Categories($idCategoria);
+// Declaração de variáveis
+$nomeCategoria = '';
+$dataCriacao = '';
+$dataModificacao = '';
 
+// Instância de classes
+$pageMaker= new PageMaker();
+// Instanciando entidade Categoria
+$categoria = new Categories($idCategoria, null);
 $categoriesRepo = $entityManager->getRepository("Categories");
 $categoriesResult = $categoriesRepo->findBy(array('id' => $idCategoria));
 
@@ -46,12 +47,14 @@ foreach ($categoriesResult as $categories)
 	$dataModificacao = $categories->getModified();
 }
 
+$categoria->setId($idCategoria);
 $categoria->setName($nomeCategoria);
 $categoria->setCreated($dataCriacao);
 $categoria->setModified($dataModificacao);
 
 
 $subCategoria = new Sub_Categories($categoria, $nomeSubCategoria);
+
 
 // Inserindo novas informações em SubCategoria
 $subCategoria->setId($idSubCategoria);
@@ -66,6 +69,7 @@ $subCategoria->setModified($subCategoriaModificada);
 		<title>Finance-37571: Resultado de edição de SubCategoria:</title>
 	</head>
 	<body>
+	<a href="../">Voltar para menu principal</a>
 	
 		<h1 align="center">Edição de SubCategoria:</h1>
 		<h2 align="center">Dados alterados:</h2>
@@ -76,14 +80,11 @@ $subCategoria->setModified($subCategoriaModificada);
 				$entityManager->merge($subCategoria);
 				$entityManager->flush();
 				
-				echo $categoria;
-				echo "<br>";
 				echo $subCategoria;
 			
 			?>
 	</body>
-	<footer style="position: fixed; right: 3px; bottom: 0px;">
-		Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-		PUC Minas - 2011-2012
-	</footer>
+	<?php 
+	$pageMaker->printFooter();
+	?>
 </html>

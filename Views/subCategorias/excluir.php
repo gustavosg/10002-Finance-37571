@@ -1,11 +1,35 @@
 <?php 
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        excluir.php
+* Descrição:   Excluir Sub Categorias
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        07/04/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
+// Instância de classes
 $pageMaker = new PageMaker();
+$functionsSub_Categories = new FunctionsSub_Categories();
+
+$subCategoriesRepo = $entityManager->getRepository("Sub_Categories");
+$subCategoriesResult = $subCategoriesRepo->findAll();
 
 ?>
 
-<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
@@ -18,17 +42,27 @@ $pageMaker = new PageMaker();
 	<h1 align="center">Sub-Categoria à Excluir:</h1>
 	<br>
 	<p align="center">
-		<label align="center">Sub-Categoria:</label> <input type="text" size="100"
-			maxlength="50" name="nomeSubCategoria" id="nomeSubCategoria" />
+	
+	<table border=2>
+	<tr>
+		<td>Sub-Categoria: </td>
+		<td>
+		<select name="idSubCategoria">
+			<option />
+			<?php 
+				$functionsSub_Categories->listarSubCategorias($subCategoriesResult);
+			?>
+		</select>
+		</td>	
+	</tr>
+	</table>
+	
 	</p>
 	<br>
 	<p align="center">
 		<button type="submit" value="submit" name="Enviar"
 			>Enviar</button>
 
-		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposSub-Categorias()">Limpar</button>
-		<br>
 	</p>
 	</form>
 </body>
