@@ -44,7 +44,7 @@ $functionsAccounts = new FunctionsAccounts();
 		<p align="center">
 			<label align="center">Conta:</label> 
 			
-					<select name="nomeConta">
+					<select name="idConta">
 		<option />
 
 			<?php $functionsAccounts->exibirListaSelectContas($accountsResult);?>

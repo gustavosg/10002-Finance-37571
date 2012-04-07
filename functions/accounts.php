@@ -58,21 +58,8 @@ class FunctionsAccounts{
 	 */
 	function exibirListaSelectContas($accountsResult){
 		foreach ($accountsResult as $result)
-		echo "<option >".$result->getName()."</option>";
+		echo "<option value=".$result->getId().">".$result->getName()."</option>";
 	}
 
-	/**
-	 * Exibe dados da conta
-	 * @param Object List entity type $accounts
-	 */
-	function exibirRegistro($accountsResult){
-		foreach ($accountsResult as $account){
-			echo "Informações da conta: <br />";
-			echo "Id da conta: ".$account->getId(). "<br />";
-			echo "Nome : ". $account->getName(). "<br />";
-			echo "Criado em: ". $account->getCreated() . "<br />";
-			echo "Modificado em: ". $account->getModified(). "<br />";
-		}
-	}
 }
 ?>

@@ -19,8 +19,17 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
+require_once '../../bootstrap.php';
+
+//Instancia de Classes:
+$pageMaker = new PageMaker();
+$functionsAccounts = new FunctionsAccounts();
+
+// Funções do Doctrine
+$accountsRepo = $entityManager->getRepository("Accounts");
+$accountsResult = $accountsRepo->findAll();
+
 ?>
-<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
@@ -29,26 +38,33 @@
 </head>
 
 <body>
+
 <form action="resultConsultar.php" name="form" method="post">
 	<h1 align="center">Entre com as informações:</h1>
-	<br>
 	<p align="center">
-		<label align="center">Conta:</label> <input type="text" size="100"
-			maxlength="50" name="nomeConta" id="nomeConta" />
-	</p>
-	<br>
-	<p align="center">
+		<table>
+			<tr>
+				<td>Conta:</td>
+				<td>		
+				
+				<select name="idConta">
+				<option />
+				
+				<?php 
+				$functionsAccounts->exibirListaSelectContas($accountsResult);
+				?>				
+				</select>
+				</td>
+			</tr>
+		</table>
 		<button type="submit" value="submit" name="Enviar"
 			>Enviar</button>
-
-		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposContas()">Limpar</button>
 		<br>
 	</p>
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+	<?php 
+	$pageMaker->printFooter();
+	
+	?>
 </html>

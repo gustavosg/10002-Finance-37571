@@ -23,20 +23,28 @@
 require_once '../../bootstrap.php';
 
 // Capturando informações da tela anterior
-$nomeConta = $_POST['nomeConta'];
+$idConta = $_POST['idConta'];
 
 // Instanciando as classes
-$conta = new Accounts(null, $nomeConta);
+$conta = new Accounts($idConta, null);
 $pageMaker = new PageMaker();
 
 // Funções do Doctrine
 $accountRepo = $entityManager->getRepository("Accounts");
-$accountsResult = $accountRepo->findBy(array ('name' => $conta->getName()));
+$accountsResult = $accountRepo->findBy(array ('id' => $conta->getId()));
 
 $idConta = 0;
-
+$nomeConta = '';
+$dataCriacao = '';
+$dataModificacao = '';
 foreach ($accountsResult as $account)
+{
 	$idConta = $account->getId();
+	$nomeConta = $account->getName();
+	$dataCriacao = $account->getCreated();
+	$dataModificacao = $account->getModified();
+}
+
 
 $accountsResult = $accountRepo->find($idConta);
 
@@ -49,31 +57,21 @@ $accountsResult = $accountRepo->find($idConta);
 	<body>
 
 		<form action="">
-
+			<a href="../">Voltar para menu principal</a>
 			<?php 
 			// Funções do Doctrine e exclusão do registro
-			$accountsRepo = $entityManager->getRepository("Accounts");
-			$accountsResult = $accountsRepo->findBy(array ('name' => $conta->getName()));
 				
-			foreach ($accountsResult as $accounts)
-			{
-				$idConta = $accounts->getId();
-				$nomeConta = $accounts->getName();
-				$dataCriacao = $accounts->getCreated();
-				$dataModificacao = $accounts->getModified();
-			}
-			
 			$conta->setId($idConta);
+			
 			$conta->setName($nomeConta);
 			$conta->setCreated($dataCriacao);
 			$conta->setModified($dataModificacao);
-				
-			$accountsResult = $accountsRepo->find($idConta);
-				
+
 			$entityManager->remove($accountsResult);
 			$entityManager->flush();
 			?>
-		<h1>Conta excluída!</h1>
+			<h1>Conta excluída!</h1>
+				
 	
 			<?php 
 			echo $conta;
@@ -81,6 +79,7 @@ $accountsResult = $accountRepo->find($idConta);
 	
 		</form>
 	
-	<?php $pageMaker->printFooter();?>
+
 	</body>
+		<?php $pageMaker->printFooter();?>
 </html>

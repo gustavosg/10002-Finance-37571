@@ -34,12 +34,11 @@ $idCategoria = 0;
 
 ?>
 
-<!DOCTYPE html>
 <html>
 	<head>
 		<script type="text/javascript" src="../scripts/functions.js"></script>
 		<meta charset="ISO-8859-1">
-	<title>Finance-37571: Cadastramento de Categoria:</title>
+		<title>Finance-37571: Cadastramento de Categoria:</title>
 	</head>
 
 	<body>
@@ -58,6 +57,8 @@ $idCategoria = 0;
 			?>
 			
 			<h1 align="center">Categoria Cadastrada:</h1>
+			
+			<p align=center>
 			<?php 
 			
 			$categoriesRepo = $entityManager->getRepository("Categories");
@@ -68,10 +69,8 @@ $idCategoria = 0;
 			$categoria->setId($idCategoria);
 			echo $categoria;
 			?>
-	
+	</p>
 		</form>
 	</body>
-
 <?php $pageMaker->printFooter();?>
-
 </html>

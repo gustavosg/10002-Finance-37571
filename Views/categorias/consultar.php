@@ -19,10 +19,17 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-$pageMaker = new PageMaker();
+require_once '../../bootstrap.php';
 
+// Instância de classes
+$categoria = new Categories();
+$pageMaker = new PageMaker();
+$functionsCategories = new FunctionsCategories();
+
+// Funções do Doctrine
+$categoriesRepo = $entityManager->getRepository("Categories");
+$categoriesResult = $categoriesRepo->findAll();
 ?>
-<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript" src="../scripts/functions.js"></script>
@@ -35,17 +42,31 @@ $pageMaker = new PageMaker();
 	<h1 align="center">Entre com as informações:</h1>
 	<br>
 	<p align="center">
-		<label align="center">Categoria:</label> <input type="text" size="100"
-			maxlength="50" name="nomeCategoria" id="nomeCategoria" />
+		<table border=2>
+		
+		<tr>
+			<td>Categoria:</td>
+			<td>
+			<select name="idCategoria">
+			<option />
+			
+			<?php $functionsCategories->listarCategorias($categoriesResult);?>
+			
+			
+			</select>
+			
+			</td>
+		</tr>
+		
+		</table>
+
+
 	</p>
 	<br>
 	<p align="center">
 		<button type="submit" value="submit" name="Enviar"
 			>Enviar</button>
 
-		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposCategorias()">Limpar</button>
-		<br>
 	</p>
 	</form>
 </body>

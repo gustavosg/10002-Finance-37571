@@ -47,7 +47,9 @@ $functionsExpenditures = new FunctionsExpenditures();
 				for ($month = 1; $month <=12; $month++){
 					if (strlen($month) == 1)
 					$month = '0'.$month;
-					$query = "SELECT EX, AC FROM expenditure EX JOIN EX.account AC WHERE SUBSTRING(EX.created, 6, 2) = '".$month."'";
+					$query = "SELECT EX, AC FROM expenditure EX JOIN EX.account AC WHERE SUBSTRING(EX.created, 6, 2) = '".$month."'
+					ORDER BY AC.name ASC
+					";
 					
 					$executeQuery= $entityManager->createQuery($query);
 					$resultQuery = $executeQuery->getResult();

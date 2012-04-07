@@ -22,17 +22,16 @@
 require_once "../../bootstrap.php";
 
 // Capturando informações da tela anterior
-$nomeCategoria = $_POST['nomeCategoria'];
+$idCategoria = $_POST['idCategoria'];
 
 // Instanciando classes
 $pageMaker = new PageMaker();
-$categoria = new Accounts(null, $nomeCategoria);
+$categoria = new Accounts($idCategoria, null);
 $functionsCategories = new FunctionsCategories();
 
 // Funções do Doctrine
 $categoryRepo = $entityManager->getRepository("Categories");
-$categories = $categoryRepo->findBy(array ('name' => $categoria->getName()));
-
+$categoriesResult = $categoryRepo->findBy(array ('id' => $idCategoria));
 ?>
 
 <html>
@@ -40,7 +39,7 @@ $categories = $categoryRepo->findBy(array ('name' => $categoria->getName()));
 		<title>Informações da Categoria:</title>
 	</head>
 	<body>
-		
+		<a href="../">Voltar para menu principal</a>
 		<h1 align="center">Categoria solicitada:</h1>
 
 		<table border=2 align="center">
@@ -50,7 +49,7 @@ $categories = $categoryRepo->findBy(array ('name' => $categoria->getName()));
 				<td>Criado em:</td>
 				<td>Modificado em:</td>
 			</tr>
-			<?php $functionsCategories->listarTodasCategorias($categories);?>
+			<?php $functionsCategories->listarTodasCategorias($categoriesResult);?>
 		</table>
 	</body>
 	

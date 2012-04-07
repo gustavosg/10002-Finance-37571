@@ -1,19 +1,50 @@
 <?php
+/*------------------------------------------------------------------------------------------------------------------------
+* DADOS DO SISTEMA
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:		Finance-37571
+* Área:		Finanças
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DA APLICAÇÃO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        SQL
+* Descrição:   Responsável pelo retorno e gravação de dados no Banco de Dados, tabela Account
+* ------------------------------------------------------------------------------------------------------------------------
+* DADOS DO ARQUIVO
+* ------------------------------------------------------------------------------------------------------------------------
+* Nome:        resultEditarCategoria.php
+* Descrição:   Classe para executar resultado de edição de Categoria
+* Autor:       37571 Gustavo Souza Gonçalves & 38441 Marco Aurélio D. Acaroni
+* Data:        27/03/2012
+* ------------------------------------------------------------------------------------------------------------------------
+* CONTROLE DE VERSÃO
+* ------------------------------------------------------------------------------------------------------------------------*/
 require_once '../../bootstrap.php';
 
-$nomeCategoria = $_POST['nomeCategoria'];
+// Recuperando informações da tela anterior
+$idCategoria = $_POST['idCategoria'];
 
-$categoria = new Categories(null, $nomeCategoria);
-print_r($categoria);
-$categorieRepo = $entityManager->getRepository("Categories");
-$categoriesResult = $categorieRepo->findBy(array ('name' => $categoria->getName()));
+// Instanciando classes
+$categoria = new Categories($idCategoria, null);
+$categoriesRepo = $entityManager->getRepository("Categories");
+$categoriesResult = $categoriesRepo->findBy(array ('id' => $idCategoria));
+$pageMaker = new PageMaker();
 
-$idCategoria = 0;
+//Definindo variáveis
+$nomeCategoria = '';
+$criacaoCategoria = '';
+$modificacaoCategoria = '';
 
-foreach ($categoriesResult as $categorie)
-	$idCategoria = $categorie->getId();
+foreach ($categoriesResult as $result)
+{
+	$nomeCategoria = $result->getName();
+	$criacaoCategoria = $result->getCreated();
+	$modificacaoCategoria = $result->getModified();
+}
 
-$categoriesResult = $categorieRepo->find($idCategoria);
+$categoria->setName($nomeCategoria);
+$categoria->setCreated($criacaoCategoria);
+$categoria->setModified($modificacaoCategoria);
 
 ?>
 
@@ -24,18 +55,26 @@ $categoriesResult = $categorieRepo->find($idCategoria);
 <body>
 
 	<form action="">
-		<h1>Categoria excluída!</h1>
+		<a href="../">Voltar para menu principal</a>
+		<?php
 
-<?php 
+		$categoriesResult = $categoriesRepo->find($idCategoria);
+			$entityManager->remove($categoriesResult);
+			$entityManager->flush();
+		?>
+		
+<h1 align="center">Categoria excluída!</h1>
 
-// TODO Gustavo nhaca do caralho, porque não imprime!
-echo $conta;
+		<p align=center>
 
-$entityManager->remove($categoriesResult);
-$entityManager->flush();
-?>
+		<?php 
+		echo $categoria;
+		?>
 
+</p>
 	</form>
 
 </body>
+<?php 
+$pageMaker->printFooter();?>
 </html>

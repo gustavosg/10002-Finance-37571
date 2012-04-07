@@ -27,41 +27,45 @@ $nomeConta = $_POST['nomeConta'];
 // Instanciando classes
 $functionsAccounts = new FunctionsAccounts();
 $conta = new Accounts();
+$pageMaker = new PageMaker();
 
 // Definindo valores
 $conta->setName($nomeConta);
 $conta->setCreated(date("Y-m-d H:i:s"));
 
-// Funções do Doctrine
-$entityManager->persist($conta);
-$entityManager->flush();
-
-// TODO Gustavo: Conferir a construção do relatório da conta cadastrada
-
-$accountRepo= $entityManager->getRepository("Accounts");
-$accountsResult= $accountRepo->findAll();
-
 ?>
 
-<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" src="../scripts/functions.js"></script>
-<meta charset="ISO-8859-1">
-<title>Finance-37571: Cadastramento de Conta:</title>
-</head>
+	<head>
+		<script type="text/javascript" src="../scripts/functions.js"></script>
+		<meta charset="ISO-8859-1">
+		<title>Finance-37571: Cadastramento de Conta:</title>
+	</head>
 
 <body>
-<a href="../">Voltar para menu principal</a>
-	<form action="" name="form" method="post">
-		<h1 align="center">Conta Cadastrada:</h1>
-		
-<?php $functionsAccounts->exibirRegistro($accountsResult);?>
-
+	<a href="../">Voltar para menu principal</a>
+		<form action="" name="form" method="post">
+			<h1 align="center">Conta Cadastrada:</h1>
+		<p align=center>
+			<?php 
+			
+			$accountRepo= $entityManager->getRepository("Accounts");
+			$accountsResult= $accountRepo->findBy(array('name' => $nomeConta));
+			
+			foreach ($accountsResult as $result)
+				$conta->setId($result->getId());
+			
+			echo $conta;
+			
+			// Funções do Doctrine
+			$entityManager->persist($conta);
+			$entityManager->flush();
+			
+			?>
+		</p>
 	</form>
 </body>
-<footer style="position: fixed; right: 3px; bottom: 0px;">
-	Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-	PUC Minas - 2011-2012
-</footer>
+	<?php 
+		$pageMaker->printFooter();
+	?>
 </html>

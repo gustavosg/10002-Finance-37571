@@ -19,22 +19,22 @@
 * ------------------------------------------------------------------------------------------------------------------------
 * CONTROLE DE VERSÃO
 * ------------------------------------------------------------------------------------------------------------------------*/
-
 require_once '../../bootstrap.php';
 
+// Capturando informações da tela anterior
 $idConta = $_POST['idConta'];
 $nomeConta = $_POST['nomeConta'];
 $contaCriada = $_POST['contaCriada'];
 $contaModificada = date("Y/m/d H:i:s");
 
+//Instância de classes
 $conta = new Accounts($idConta, null);
+$pageMaker = new PageMaker();
 
+// Definindo valores
 $conta->setName($nomeConta);
 $conta->setCreated($contaCriada);
 $conta->setModified($contaModificada);
-
-$entityManager->merge($conta);
-$entityManager->flush();
 
 ?>
 
@@ -44,14 +44,19 @@ $entityManager->flush();
 	</head>
 	<body>
 	
-		<h1 align="center">Edição de Conta:</h1>
+	<a href="../">Voltar para menu principal</a>
+		<h1 align="center">Informações editadas:</h1>
 		<p align="center" />
 	
 	
+	<?php 
+	echo $conta;
+	//Gravação
+	$entityManager->merge($conta);
+	$entityManager->flush();
+	?>
+	
 	</body>
-	<footer style="position: fixed; right: 3px; bottom: 0px;">
-		Gustavo Souza Gonçalves - 37571 <br> Marco Aurélio D. Acaroni - <br>
-		PUC Minas - 2011-2012
-	</footer>
+<?php $pageMaker->printFooter();?>
 
 </html>

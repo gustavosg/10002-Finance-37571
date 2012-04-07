@@ -47,7 +47,7 @@ $categoriesResult = $categoriesRepo->findAll();
 	
 	<p align="center">
 		<label align="center">Categoria:</label> 
-			<select name="nomeCategoria">
+			<select name="idCategoria">
 				<option />
 
 			<?php $functionsCategories->listarCategorias($categoriesResult);?>

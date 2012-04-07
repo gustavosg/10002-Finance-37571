@@ -23,15 +23,15 @@
 require_once "../../bootstrap.php";
 
 // Recebendo valores da tela anterior
-$nomeConta = $_POST['nomeConta'];
+$idConta = $_POST['idConta'];
 
 // Instanciando Classes
 $pageMaker = new PageMaker();
 $functionsAccounts = new FunctionsAccounts();
-$conta = new Accounts(null, $nomeConta);
+$conta = new Accounts($idConta, null);
 
-$accountsRepo= $entityManager->getRepository("accounts");
-$accountsResult = $accountsRepo->findBy(array ('name' => $conta->getName()));
+$accountsRepo= $entityManager->getRepository("Accounts");
+$accountsResult = $accountsRepo->findBy(array ('id' => $conta->getId()));
 
 ?>
 
@@ -40,6 +40,7 @@ $accountsResult = $accountsRepo->findBy(array ('name' => $conta->getName()));
 		<title>Informações da Conta:</title>
 	</head>
 	<body>
+	<a href="../">Voltar para menu principal</a>
 	<h1 align="center">Dados da conta:</h1>
 	<p align="center" />
 	<table border=2>
@@ -49,7 +50,9 @@ $accountsResult = $accountsRepo->findBy(array ('name' => $conta->getName()));
 			<td>Criado em: </td>
 			<td>Modificado em:</td>
 		</tr>
-			<?php $functionsAccounts->listarTodasContas($accountsResult);?>
+			<?php 
+			$functionsAccounts->listarTodasContas($accountsResult);
+			?>
 		</table>
 	</body>
 		<?php $pageMaker->printFooter();?>
