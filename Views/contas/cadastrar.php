@@ -45,9 +45,6 @@ $pageMaker = new PageMaker();
 		<button type="submit" value="submit" name="Enviar"
 			>Enviar</button>
 
-		<button type="button" value="Limpar" name="Limpar"
-			onclick="limparCamposContas()">Limpar</button>
-		<br>
 	</p>
 	</form>
 </body>
